@@ -1,0 +1,75 @@
+@import "./../../../styles.css";
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    min-height: 90px;
+    color: var(--fontColor);
+    
+    & a > img {
+        margin-top: 25px;
+        width: 150px;
+    }
+
+    & .header---logo{
+        display: none;
+    }
+
+    & div {
+        text-align: center;
+        margin-bottom: 10px;
+
+        & a {
+            & h1 {
+                display: flex;
+                justify-content: center;    
+                font-size: 3.2rem;
+                padding-top: 25px;
+            }
+        }
+
+        & .title {
+            padding-top: 7px;
+            font-size: 1.7rem;
+        }
+    }
+}
+
+.title--large {
+    display: none;
+}
+
+
+@media (min-width: 1024px) {
+    .header {
+        font-size: 2rem;
+        flex-direction: row;   
+        justify-content: space-evenly;
+        align-items: center;
+        
+        & a > img {
+            height: 60px;
+            margin: 0;
+        }
+
+        > img {
+            display: block;
+            height: 90px;
+            padding: 0 10px 20px;
+        }  
+        
+        .header---logo{
+            display: block;
+        }
+
+        .title--small {
+            display: none;
+        }
+    
+        .title--large {
+            display: block;
+            font-size: 2.7rem;
+        }
+    }
+}
