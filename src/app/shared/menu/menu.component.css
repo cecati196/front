@@ -1,0 +1,61 @@
+/* Estilos del menú */
+.menu {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .toggle-btn {
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+  }
+  
+  .toggle-btn span {
+    display: block;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px auto;
+    transition: all 0.3s;
+  }
+
+  .menu-svg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 65px;
+    height: 65px;
+    z-index: 3;
+    cursor: pointer;
+    background-color: var(--fontColor);
+    border-radius: 30%;
+    bottom: 10px;
+    right:10px;
+    color: var(--mainColor);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.menu__mobile {
+    stroke: var(--mainColor);
+    height: 35px;
+    padding: 4px;
+    stroke-linecap: round; 
+    stroke-width: 6px;
+}
+
+.menu--legend {
+    margin-top: 3px;
+}
+  
+  /* Mostrar/ocultar menú en pantallas pequeñas */
+  #toggle {
+    display: none;
+  }
+  
+  #toggle:checked ~ .menu-items {
+    display: block;
+  }
