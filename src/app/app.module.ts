@@ -12,6 +12,7 @@ import { HomeComponent } from './views/home/home.component';
 import { CardQuestionsComponent } from './views/card-questions/card-questions.component';
 import { GaleryComponent } from './views/galery/galery.component';
 import { MenuComponent } from './shared/menu/menu.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MenuComponent } from './shared/menu/menu.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

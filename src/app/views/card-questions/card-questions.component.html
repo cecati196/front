@@ -1,54 +1,17 @@
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Faqs with accordion</h4>
-                <h6 class="card-subtitle"></h6>
-                <div id="accordion1" role="tablist" aria-multiselectable="true">
-                    <div class="card m-b-0">
-                        <div class="card-header" role="tab" id="headingOne1">
-                            <h5 class="mb-0">
-                            <a class="link collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne">
-                              Q1. How can i purchase this admin ?
-                            </a>
-                          </h5>
-                        </div>
-                        <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1" style="">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card m-b-0">
-                        <div class="card-header" role="tab" id="headingTwo2">
-                            <h5 class="mb-0">
-                            <a class="link collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
-                              Q2. How to modify Navigation?
-                            </a>
-                          </h5>
-                        </div>
-                        <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" style="">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" role="tab" id="headingThree3">
-                            <h5 class="mb-0">
-                            <a class="collapsed link" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
-                              Q3. How to get yearly Support?
-                            </a>
-                          </h5>
-                        </div>
-                        <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section class="questions">
+    <h3 class="questions--title">Preguntas Frecuentes</h3>
+    <div class="container__questions">
+        
+        <div *ngFor="let element of questions; let i = index" class="question__container">
+            <label class="question--interrogation" onclick="toogleQuestion(i)">
+                {{ element.question }}
+                <i class="fa fa-arrow-down" [ngClass]="{ 'rotate-icon':showQuestion[i] }"></i>
+                <input type="checkbox" [(ngModel)]="showQuestion[i]">
+            </label>
+            <div [ngClass]="{'question--answer':showQuestion[i], 'question--answer--hide': !showQuestion[i]}">
+                {{ element.answer}}
+            </div>           
         </div>
+    
     </div>
-</div>
+</section>
