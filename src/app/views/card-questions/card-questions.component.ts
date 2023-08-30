@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { FormsModule} from '@angular/forms'
+
+import { Question } from 'src/app/shared/interfaces/question.interface';
+
+import { CONSTANTS } from '../../shared/CONSTANTS';
 
 @Component({
   selector: 'app-card-questions',
@@ -6,5 +11,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-questions.component.css']
 })
 export class CardQuestionsComponent {
+  questions:Question[] = CONSTANTS.questions;
+
+  showQuestion: { [key:number]:boolean } = {};
+
+  toogleQuestion(index: number): void {
+    this.showQuestion[index] = !this.showQuestion[index]
+  }
 
 }
