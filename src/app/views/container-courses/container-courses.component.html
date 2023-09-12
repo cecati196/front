@@ -1,9 +1,18 @@
-<section>
+<section class="section__courses">
     <h2>Cursos disponibles:</h2>
-    <app-card-cursos></app-card-cursos>
-    <app-card-cursos></app-card-cursos>
-    <app-card-cursos></app-card-cursos>
-    <app-card-cursos></app-card-cursos>
-    <app-card-cursos></app-card-cursos>
-
+    <div class="course" *ngFor="let course of courses">
+        <p class="containerCourse--title"><strong>{{ course.courseName }}</strong></p>
+        <p class="containerCourse--profesor">Profesor: {{course.professor }}</p>
+        
+        <p>Inicia:  <b>{{ course.startDate }}</b></p>
+        <p>Termina:  <b>{{ course.endDate }}</b></p>        
+        <p>Horario:  <b>{{ course.startTime }} a {{ course.endTime }}</b> hrs.</p>
+        
+        <p>Modalidad del curso: <b><i>{{ course.courseModality }}</i></b></p>
+        <p>Dias de clase: {{ course.daysOfClasses }}</p>
+        <p>Costo del curso: <b>{{ course.cost }}</b></p>
+        <p>{{ course.observations }}</p>
+        
+        <!-- <img src="" alt="Logo de Especialidad"> -->        
+    </div>
 </section>

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { FormsModule} from '@angular/forms'
 
 import { Question } from 'src/app/shared/interfaces/question.interface';
 
-import { CONSTANTS } from '../../shared/CONSTANTS';
+import { CONSTANTS } from '../../shared/constants';
 
 @Component({
   selector: 'app-card-questions',

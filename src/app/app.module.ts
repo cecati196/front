@@ -6,13 +6,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { CardCursosComponent } from './views/card-cursos/card-cursos.component';
 import { ContainerCoursesComponent } from './views/container-courses/container-courses.component';
 import { HomeComponent } from './views/home/home.component';
 import { CardQuestionsComponent } from './views/card-questions/card-questions.component';
 import { GaleryComponent } from './views/galery/galery.component';
 import { MenuComponent } from './shared/menu/menu.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,6 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     NavbarComponent,
     FooterComponent,
-    CardCursosComponent,
     ContainerCoursesComponent,
     HomeComponent,
     CardQuestionsComponent,
@@ -30,7 +29,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
