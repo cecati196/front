@@ -1,1 +1,21 @@
-<p>galery works!</p>
+<section class="gallery">
+    <h3>Galería de Imágenes</h3>
+    <div class="carousel">
+        <div class="carousel__container">
+            <button class="carousel__previous" aria-label="Anterior" (click)="prevImage()">Anterior
+                <i class="fa-solid fa-arrow-right fa-rotate-180"></i>
+            </button>
+            <div class="carousel__list" #carousel>
+                    <picture class="container__picture" *ngFor="let img of images; let i = index">
+                        <img [srcset]="img.imageURL" media="100%"
+                        [alt]="img.name" class="gallery__img">
+                    </picture>
+            </div>
+            <button class="carousel__next" aria-label="Siguiente" (click)="nextImage()">Siguiente
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+        <div role="tablist" class="carousel__indicators"></div>
+    </div>
+    <div class="preloader"></div>  
+</section>
