@@ -1,17 +1,17 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-//import Glide from '@glidejs/glide/dist/glide.modular.esm';
+import { cilArrowCircleLeft, cilArrowCircleRight } from '@coreui/icons';
 
 import { CONSTANTS } from '../../shared/constants';
 import { Images } from 'src/app/shared/interfaces/image.interface';
 
 
-
 @Component({
   selector: 'app-galery',
   templateUrl: './galery.component.html',
-  styleUrls: ['./galery.component.css']
+  styleUrls: ['./galery.component.css'],
 })
 export class GaleryComponent {
+  icons = { cilArrowCircleLeft, cilArrowCircleRight };
 
   @ViewChild('carousel') carousel: ElementRef | null = null;
   currentIndex: number = 0;

@@ -1,5 +1,5 @@
+<h2>Cursos disponibles:</h2>
 <section class="section__courses">
-    <h2>Cursos disponibles:</h2>
     <div class="course" *ngFor="let course of courses">
         <p class="containerCourse--title"><strong>{{ course.courseName }}</strong></p>
         <p class="containerCourse--profesor">Profesor: {{course.professor }}</p>
@@ -13,6 +13,7 @@
         <p>Costo del curso: <b>{{ course.cost }}</b></p>
         <p>{{ course.observations }}</p>
         
-        <!-- <img src="" alt="Logo de Especialidad"> -->        
+        <img [src]=course.image [alt]=course.specialty>
     </div>
 </section>
+

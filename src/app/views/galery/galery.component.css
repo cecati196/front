@@ -26,14 +26,10 @@
 
 .carousel__previous, 
 .carousel__next {
-    /* position: absolute;
-    display: block;
-    width: 30px; */
-    border: none;
-    /* top: 50%; */
-    line-height: 30px;
-    /* text-align: center; */
     background: none;
+    border: none;
+    position: absolute;
+    top: 50%;
     color: var(--fontColor);
     opacity: 0.4;
     font-size: 3rem;
@@ -42,14 +38,21 @@
 .carousel__previous:hover, 
 .carousel__next:hover {
     opacity: 1;
+    cursor: pointer;
+}   
+
+.carousel__previous:active, 
+.carousel__next:active {
+    scale: 1.5;
 }   
 
 .carousel__previous{
-    left: -30px;
+    left: 1%;
+    z-index: 1;
 }
 
 .carousel__next {
-    right: -30px;
+    right: 1%;
 }
 
 .gallery__img {    

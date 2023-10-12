@@ -6,11 +6,11 @@
     font-size: 1.6rem;    
 }
 
-.section__courses--title {
+h2 {
     color: var(--fontColor);
     text-align: center;
     font-size: 2.6rem;
-    padding-bottom: 15px;
+    margin: 20px 0;
 }
 
 .container__Specialties {
@@ -98,7 +98,7 @@
 
 .containerCourses > div {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;    
     background: linear-gradient(180deg, var(--mainColor), var(--mainColor2));
     border-radius: 7px;
@@ -112,6 +112,7 @@
     padding-bottom: 15px;
     text-align: center;
     max-width: 400px;
+    min-height: 470px;
 }
 
 .course > img {
@@ -121,7 +122,7 @@
 .containerCourse--title {
     font-size: 2.3rem;
     background-color: var(--contrastColor);
-    color: var(--mainColor);    
+    color: var(--mainColor);
     padding: 15px 10px;
 }
 
@@ -168,37 +169,20 @@
     font-weight: 700;
 }
 
-/* Not Found para Fichas de Información */
-.mainNotFound{
-    color: var(--fontColor);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 2.5rem;
-    height: 50vh;
-    max-width: 700px;
-    padding: 20px;
-    text-align: center;
-}
-
-.mainNotFound > p {
-    margin-bottom: 30px;
-}
-/*Termina: Not Found para Fichas de Información */
-
-
-/* estilos de diseño con PDF, analizar si reutilizar en inscripcion*/
-.educativeOffer__button {
-    padding: 12px 25px;
-    margin-bottom: 10px;
-}
-
-.educativeOffer__button:visited {
-    color: var(--mainColor);
-}
-/* Terminan estilos de diseño con PDF */
-
 @media (min-width: 1024px) {
+    .section__courses {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.6rem;    
+    }
+
+    .course {
+        margin: 0 25px;
+    }
+
     .Specialties--containers {
         max-width: 450px;
     }

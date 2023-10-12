@@ -58,12 +58,6 @@
 }
 
 @media (min-width: 1024px) {
-    .container__questions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-    }
-    
     .question__container {
         width: 45vw;
     }    
