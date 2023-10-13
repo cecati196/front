@@ -1,4 +1,5 @@
 <h2>Cursos disponibles:</h2>
+<app-spinner *ngIf="this.spinner"></app-spinner>
 <section class="section__courses">
     <div class="course" *ngFor="let course of courses">
         <p class="containerCourse--title"><strong>{{ course.courseName }}</strong></p>

@@ -13,8 +13,9 @@ import { CONSTANTS } from 'src/app/shared/constants';
 export class ContainerCoursesComponent implements OnInit{
   constructor(
     private coursesService: CoursesService
-  ){}
-
+    ){}
+    
+  public spinner = true;
   public courses:Course[] = [];
   public specialities:Specialitie = {
     foodAndDrinks: [],
@@ -27,6 +28,7 @@ export class ContainerCoursesComponent implements OnInit{
         this.courses.push(course);
       }
       const specialities = this.createSpecialities(this.courses);
+      this.spinner = !this.spinner;
     })
   }
 

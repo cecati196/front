@@ -38,8 +38,13 @@
     width: 100%;
 }
 
+label > i {
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
 .rotate-icon {
-    transform: rotate(90deg); /* Cambia el ángulo según sea necesario */
+    transform: rotate(180deg); /* Cambia el ángulo según sea necesario */
     transition: transform 0.3s ease; /* Agrega una transición suave */
   }
 

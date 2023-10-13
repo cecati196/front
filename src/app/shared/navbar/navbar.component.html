@@ -1,7 +1,7 @@
 <!-- Estructura del menú -->
 <div class="menu-container">
     <nav class="menu">
-        <input type="checkbox" id="toggle" />
+        <input type="checkbox" id="toggle"/>
         <label for="toggle" class="toggle-btn">
             <svg id="menu-svg" class="menu__mobile"  viewBox="0 0 46 34.5" stroke-linecap="round" stroke-width="6px">
                 <line id="lineSpinHide" x1="3" y1="17.25" x2="43" y2="17.25"/>
@@ -13,16 +13,16 @@
         <div class="menu-items">
             <ul>
                 <li>
-                    <a routerLink="/">Inicio</a>
+                    <a (click)="this.closeNav()" routerLink="/">Inicio</a>
                 </li>
                 <li>
-                    <a routerLink="/cursos">Cursos Disponibles</a>
+                    <a (click)="this.closeNav()" routerLink="/cursos">Cursos Disponibles</a>
                 </li>
                 <li>
-                    <a routerLink="/preguntas">Preguntas Frecuentes</a>
+                    <a (click)="this.closeNav()" routerLink="/preguntas">Preguntas Frecuentes</a>
                 </li>
                 <li>
-                    <a routerLink="/galeria">Galería de Imágenes</a>
+                    <a (click)="this.closeNav()" routerLink="/galeria">Galería de Imágenes</a>
                 </li>
             </ul>
         </div>

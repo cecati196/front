@@ -15,6 +15,7 @@ import { GaleryComponent } from './views/galery/galery.component';
 import { MenuComponent } from './shared/menu/menu.component';
 import { ContainerSpecialitiesComponent } from './views/container-specialities/container-specialities.component';
 import { SearchComponent } from './components/search/search.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SearchComponent } from './components/search/search.component';
     GaleryComponent,
     MenuComponent,
     ContainerSpecialitiesComponent,
-    SearchComponent
+    SearchComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
