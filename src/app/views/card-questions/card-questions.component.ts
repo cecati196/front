@@ -15,7 +15,7 @@ export class CardQuestionsComponent {
   showQuestion: { [key:number]:boolean } = {};
 
   toogleQuestion(index: number): void {
-    this.showQuestion[index] = !this.showQuestion[index]
+    this.showQuestion[index] = !this.showQuestion[index];
   }
 
 }

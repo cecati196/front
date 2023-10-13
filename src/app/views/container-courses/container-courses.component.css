@@ -104,7 +104,6 @@ app-spinner {
 
 .containerCourses > div {
     display: flex;
-    /* flex-direction: column; */
     align-items: center;    
     background: linear-gradient(180deg, var(--mainColor), var(--mainColor2));
     border-radius: 7px;
@@ -139,7 +138,7 @@ app-spinner {
     padding: 0px 15px;
 }
 
-#containerCourse--info {
+.containerCourse--info {
     background-color: var(--fontColor);
     border-radius: 5em;
     color: var(--mainColor);
@@ -153,9 +152,9 @@ app-spinner {
     cursor: pointer;
 }
 
-#containerCourse--info img {
-    height: 30px;
-    margin-right: 10px;
+.containerCourse--info i {
+    padding-right: 15px;
+    padding-left: 5px;
 }
 
 .button-inscription {
