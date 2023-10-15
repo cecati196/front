@@ -72,25 +72,6 @@
     padding: 8px 0;
 }
 
-.whatsapp {
-    position: fixed;
-    right: 10px;
-    bottom: 75px;
-    background-color: var(--mainColor2);
-    border: solid 2px var(--contrastColor2);
-    border-radius: 25%;
-    padding: 2px;
-    width: 65px;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.whatsapp img {
-    height: 50px;
-}
-
 .ubication {
     display: flex;
     flex-direction: column;
@@ -113,9 +94,6 @@
 }
 
 @media (min-width: 1024px) {
-    .whatsapp {
-        position: static;
-    }
     .ubication {     
         width: auto;
     }

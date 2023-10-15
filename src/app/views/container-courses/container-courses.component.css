@@ -120,6 +120,13 @@ app-spinner {
     min-height: 470px;
 }
 
+.course__more-information {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
 .course > img {
     width: 115px;
 }

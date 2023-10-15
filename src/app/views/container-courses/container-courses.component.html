@@ -25,7 +25,7 @@
             <span>INFORMACIÓN</span>
         </div>
     </div>
-    <div *ngIf="this.showMoreContent[i]" class="course">
+    <div *ngIf="this.showMoreContent[i]" class="course course__more-information">
         <p><b> Contenido Tematico:</b> {{ course.thematicContent }} </p>
         <p><b>Observaciones:</b> {{ course.observations }}</p>
         <div (click)="moreInformation(i)" class="containerCourse--info">
