@@ -13,8 +13,10 @@ import { CONSTANTS } from 'src/app/shared/constants';
 export class ContainerCoursesComponent implements OnInit{
   constructor(
     private coursesService: CoursesService
-  ){}
-
+    ){}
+    
+  public spinner = true;
+  public showMoreContent: { [key:number]:boolean } = {};
   public courses:Course[] = [];
   public specialities:Specialitie = {
     foodAndDrinks: [],
@@ -27,6 +29,7 @@ export class ContainerCoursesComponent implements OnInit{
         this.courses.push(course);
       }
       const specialities = this.createSpecialities(this.courses);
+      this.spinner = !this.spinner;
     })
   }
 
@@ -40,6 +43,9 @@ export class ContainerCoursesComponent implements OnInit{
     return course;
   }
   
+  moreInformation(index:number) {
+    this.showMoreContent[index] =  !this.showMoreContent[index];
+  }
 
   private createSpecialities(courses: Course[]){
     const specialitiesNames:string[] = [];
@@ -58,7 +64,7 @@ export class ContainerCoursesComponent implements OnInit{
           courseForSpeciality.push(course);
         }
       }
-      console.log(courseForSpeciality);
+      //console.log(courseForSpeciality);
       return courseForSpeciality;
       // console.log(course)
       // const nameSpeciality = Object.keys(course);

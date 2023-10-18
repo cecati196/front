@@ -5,7 +5,7 @@
         <div *ngFor="let element of questions; let i = index" class="question__container">
             <label class="question--interrogation" onclick="toogleQuestion(i)">
                 {{ element.question }}
-                <i class="fa fa-arrow-down" [ngClass]="{ 'rotate-icon':showQuestion[i] }"></i>
+                <i class="fa-solid fa-circle-arrow-down" [ngClass]="{ 'rotate-icon':showQuestion[i] }"></i>
                 <input type="checkbox" [(ngModel)]="showQuestion[i]">
             </label>
             <div [ngClass]="{'question--answer':showQuestion[i], 'question--answer--hide': !showQuestion[i]}">

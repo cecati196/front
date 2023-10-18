@@ -1,19 +1,38 @@
 <h2>Cursos disponibles:</h2>
+<app-spinner *ngIf="this.spinner"></app-spinner>
 <section class="section__courses">
-    <div class="course" *ngFor="let course of courses">
+    <div class="course" *ngFor="let course of courses; let i = index">
         <p class="containerCourse--title"><strong>{{ course.courseName }}</strong></p>
-        <p class="containerCourse--profesor">Profesor: {{course.professor }}</p>
-        
-        <p>Inicia:  <b>{{ course.startDate }}</b></p>
-        <p>Termina:  <b>{{ course.endDate }}</b></p>        
-        <p>Horario:  <b>{{ course.startTime }} a {{ course.endTime }}</b> hrs.</p>
-        
-        <p>Modalidad del curso: <b><i>{{ course.courseModality }}</i></b></p>
-        <p>Dias de clase: {{ course.daysOfClasses }}</p>
-        <p>Costo del curso: <b>{{ course.cost }}</b></p>
-        <p>{{ course.observations }}</p>
-        
-        <img [src]=course.image [alt]=course.specialty>
+        <div *ngIf="!this.showMoreContent[i]" class="course">
+            <p class="containerCourse--profesor">Tipo de Curso: {{ course.courseType }}</p>
+            <p class="containerCourse--profesor">Profesor: {{course.professor }}</p>
+            
+            <p>Inicia:  <b>{{ course.startDate }}</b></p>
+            <p>Termina:  <b>{{ course.endDate }}</b></p>
+            <p>{{ course.daysOfClasses }} de <b>{{ course.startTime }} a {{ course.endTime }}</b> hrs.</p>
+            
+            <p>Modalidad: <b><i>{{ course.courseModality }}</i></b></p>
+            <p>Costo: <b>${{ course.cost }}</b></p>
+            
+            <img [src]=course.image [alt]=course.specialty>
+            <p>Especialidad: {{ course.specialty }}</p>
+            <p>Objetivo: {{course.objective}}</p>
+            
+            <div 
+            class="containerCourse--info"
+            (click)="moreInformation(i)">
+            <i class="fa-solid fa-circle-plus"></i>
+            <span>INFORMACIÓN</span>
+        </div>
+    </div>
+    <div *ngIf="this.showMoreContent[i]" class="course course__more-information">
+        <p><b> Contenido Tematico:</b> {{ course.thematicContent }} </p>
+        <p><b>Observaciones:</b> {{ course.observations }}</p>
+        <div (click)="moreInformation(i)" class="containerCourse--info">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <span>REGRESAR</span>
+            </div>
+        </div>
     </div>
 </section>
 
