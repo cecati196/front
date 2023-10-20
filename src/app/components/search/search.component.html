@@ -1,1 +1,4 @@
-<input type="search">
+<form (keyup)="search(txtPharse.value)">
+    <p>Buscar por curso, especialidad o profesor: </p>
+    <input type="search" #txtPharse>
+</form>

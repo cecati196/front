@@ -1,7 +1,9 @@
+<app-search (inputChange)="filterResults($event)" *ngIf="!this.spinner"/>
+<p class="counter__courses" *ngIf="!this.spinner">Total de cursos: {{ this.countCourses }}</p>
 <h2>Cursos disponibles:</h2>
 <app-spinner *ngIf="this.spinner"></app-spinner>
-<section class="section__courses">
-    <div class="course" *ngFor="let course of courses; let i = index">
+<section class="section__courses">    
+    <div class="course" *ngFor="let course of filteredCourses; let i = index">
         <p class="containerCourse--title"><strong>{{ course.courseName }}</strong></p>
         <div *ngIf="!this.showMoreContent[i]" class="course">
             <p class="containerCourse--profesor">Tipo de Curso: {{ course.courseType }}</p>
@@ -35,4 +37,3 @@
         </div>
     </div>
 </section>
-

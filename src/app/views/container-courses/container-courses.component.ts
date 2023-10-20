@@ -10,25 +10,30 @@ import { CONSTANTS } from 'src/app/shared/constants';
   templateUrl: './container-courses.component.html',
   styleUrls: ['./container-courses.component.css']
 })
-export class ContainerCoursesComponent implements OnInit{
+export class ContainerCoursesComponent implements OnInit {
   constructor(
     private coursesService: CoursesService
     ){}
     
   public spinner = true;
   public showMoreContent: { [key:number]:boolean } = {};
-  public courses:Course[] = [];
-  public specialities:Specialitie = {
-    foodAndDrinks: [],
-  };
+  public allCourses:Course[] = [];
+  // public specialities:Specialitie = {
+  //   foodAndDrinks: [],
+  // };
+  public filteredCourses: Course[] = [];
+  public showFilteredResults = false;
+  public countCourses: number = 0;
 
   ngOnInit(): void {
     this.coursesService.getCourses().subscribe( (res) => {
       const { data } = res;
       for (const course of data) {
-        this.courses.push(course);
+        this.allCourses.push(course);
       }
-      const specialities = this.createSpecialities(this.courses);
+      const specialities = this.createSpecialities(this.allCourses);
+      this.filteredCourses = [...this.allCourses];
+      this.countCourses =  this.allCourses.length;
       this.spinner = !this.spinner;
     })
   }
@@ -84,4 +89,13 @@ export class ContainerCoursesComponent implements OnInit{
     // }                 
   }
 
+  filterResults(searchPhrase: string) {
+    this.filteredCourses = this.allCourses.filter(course =>
+      course.courseName.toLowerCase().includes(searchPhrase.toLowerCase())
+      || course.professor.toLowerCase().includes(searchPhrase.toLowerCase()) 
+      || course.specialty.toLowerCase().includes(searchPhrase.toLowerCase())
+    );
+    this.countCourses = this.filteredCourses.length;
+    this.showFilteredResults = true;
+  }
 }
