@@ -20,6 +20,7 @@ export class ContainerCoursesComponent implements OnInit {
   public filteredCourses: Course[] = [];
   public showFilteredResults = false;
   public countCourses: number = 0;
+  public phraseSearch = '';
 
   ngOnInit(): void {
     this.coursesService.getCourses().subscribe( (res) => {
@@ -90,6 +91,7 @@ export class ContainerCoursesComponent implements OnInit {
       || course.professor.toLowerCase().includes(searchPhrase.toLowerCase()) 
       || course.specialty.toLowerCase().includes(searchPhrase.toLowerCase())
     );
+    this.phraseSearch = searchPhrase;
     this.countCourses = this.filteredCourses.length;
     this.showFilteredResults = true;
   }
