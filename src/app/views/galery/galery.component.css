@@ -12,6 +12,7 @@
 
 .carousel {
     width: 80vw;
+    max-width: 1000px;
 }
 
 .carousel__container{
@@ -22,6 +23,9 @@
 
 .container__picture{
     margin-right: 25px;
+}
+.container__picture > img{
+    width: 100;
 }
 
 .carousel__previous, 
@@ -55,22 +59,19 @@
     right: 1%;
 }
 
-.gallery__img {    
-    max-height: 30vh;    
+.gallery__img {
+    max-height: 30vh;
 }
 
 .carousel__list {
+    max-width: 100%;
     display: flex;
     transition: transform 0.3s ease-in-out;
 }
 
-.carousel__list > figure {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    margin-right: 20px;
+.carousel__list > picture img {
+    border: 2px solid var(--fontColor2);
+    border-radius: 1em;
 }
 
 .carousel__indicators .glider-dot {

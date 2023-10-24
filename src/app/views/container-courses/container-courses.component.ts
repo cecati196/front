@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { CoursesService } from '../../services/courses.service';
 import { Course } from 'src/app/shared/interfaces/course.interface';
-import { Specialitie } from 'src/app/shared/interfaces/specialities';
 import { CONSTANTS } from 'src/app/shared/constants';
 
 @Component({
@@ -18,9 +17,6 @@ export class ContainerCoursesComponent implements OnInit {
   public spinner = true;
   public showMoreContent: { [key:number]:boolean } = {};
   public allCourses:Course[] = [];
-  // public specialities:Specialitie = {
-  //   foodAndDrinks: [],
-  // };
   public filteredCourses: Course[] = [];
   public showFilteredResults = false;
   public countCourses: number = 0;
@@ -69,7 +65,6 @@ export class ContainerCoursesComponent implements OnInit {
           courseForSpeciality.push(course);
         }
       }
-      //console.log(courseForSpeciality);
       return courseForSpeciality;
       // console.log(course)
       // const nameSpeciality = Object.keys(course);
@@ -78,10 +73,10 @@ export class ContainerCoursesComponent implements OnInit {
       //   console.log("entrando")
       //   }
       })
-      //console.log(specialities)
-      if (specialities[0]) {
+      console.log("especialidades", specialities)
+      // if (specialities[0]) {
         
-      }
+      // }
   return specialities;
     
     // if (image == undefined) {                

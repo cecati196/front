@@ -10,7 +10,9 @@ input {
     background-color: var(--mainColor);
     border: 2px solid var(--fontColor);
     border-radius: 2em;
-    color: var(--fontColor2);
+    color: var(--fontColor);
+    font-family: monospace;
+    font-weight: bold;
     font-size: 1.9rem;
     padding: 10px;
 }

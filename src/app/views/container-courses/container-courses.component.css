@@ -158,7 +158,7 @@ app-search {
 }
 
 .containerCourse--info {
-    background-color: var(--fontColor);
+    background-color: var(--fontColor2);
     border-radius: 5em;
     color: var(--mainColor);
     display: flex;    

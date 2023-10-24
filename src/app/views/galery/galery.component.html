@@ -7,7 +7,7 @@
             </button>
             <div class="carousel__list" #carousel>
                     <picture class="container__picture" *ngFor="let img of images; let i = index">
-                        <img [srcset]="img.imageURL" media="100%"
+                        <img #img [srcset]="img.imageURL" media="100%"
                         [alt]="img.name" class="gallery__img">
                     </picture>
             </div>
@@ -17,5 +17,5 @@
         </div>
         <div role="tablist" class="carousel__indicators"></div>
     </div>
-    <div class="preloader"></div>  
+    <div class="preloader"></div>
 </section>
