@@ -28,7 +28,7 @@ export class ContainerCoursesComponent implements OnInit {
       for (const course of data) {
         this.allCourses.push(course);
       }
-      const specialities = this.createSpecialities(this.allCourses);
+      this.createSpecialities(this.allCourses);
       this.filteredCourses = [...this.allCourses];
       this.countCourses =  this.allCourses.length;
       this.spinner = !this.spinner;
@@ -40,6 +40,8 @@ export class ContainerCoursesComponent implements OnInit {
       if (CONSTANTS.logos[i].name === course.specialty) {
         course.image = CONSTANTS.logos[i].url;
         break;
+      } else  {
+        course.image = "https://storage.googleapis.com/images-cecati196/assets/logoDefault.png";
       }
     }
     return course;
@@ -58,31 +60,6 @@ export class ContainerCoursesComponent implements OnInit {
       }
       this.assignImage(objCourse);
     }
-    const specialities = specialitiesNames.map( speciality => {
-      const courseForSpeciality:Course[] = [];
-      for (const key in courses) {
-        const course = courses[key];
-        if (speciality === course.specialty) {
-          courseForSpeciality.push(course);
-        }
-      }
-      return courseForSpeciality;
-      // console.log(course)
-      // const nameSpeciality = Object.keys(course);
-      // console.log(nameSpeciality)
-      // if (!array[0]) {
-      //   console.log("entrando")
-      //   }
-      })
-      console.log("especialidades", specialities)
-      // if (specialities[0]) {
-        
-      // }
-  return specialities;
-    
-    // if (image == undefined) {                
-    //     image = "LogoCecatiEspecialidades.png";
-    // }                 
   }
 
   filterResults(searchPhrase: string) {
@@ -94,5 +71,10 @@ export class ContainerCoursesComponent implements OnInit {
     this.phraseSearch = searchPhrase;
     this.countCourses = this.filteredCourses.length;
     this.showFilteredResults = true;
+  }
+  cleanResults(value:boolean){
+    if (!value) {
+      this.showFilteredResults = false;      
+    }
   }
 }

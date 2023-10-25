@@ -1,14 +1,23 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
-  @Output() inputChange = new EventEmitter<string>();
-  search(phrase:string){
-    this.inputChange.emit(phrase);
+export class SearchComponent implements OnInit{
+  ngOnInit(): void {
+    this.phrase.valueChanges.subscribe( value =>{
+      if (value !== '') {
+        this.inputChange.emit(value);
+      } else {
+        
+        this.inputClean.emit(false);
+      }
+    })
   }
-
+  phrase = new FormControl();
+  @Output() inputChange = new EventEmitter<string>();
+  @Output() inputClean = new EventEmitter<boolean>();
 }

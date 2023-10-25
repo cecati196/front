@@ -1,6 +1,11 @@
-<app-search (inputChange)="filterResults($event)" *ngIf="!this.spinner"/>
+<!-- (inputClean)="cleanResults()" -->
+<app-search 
+    (inputChange)="filterResults($event)"
+    (inputClean)="cleanResults($event)"
+    *ngIf="!this.spinner"
+/>
 <p class="counter__courses" *ngIf="!this.spinner && !this.showFilteredResults">Total de cursos: {{ this.countCourses }}</p>
-<p class="counter__courses" *ngIf="!this.spinner && this.showFilteredResults">Resultados de busqueda con "{{this.phraseSearch}}": {{ this.countCourses }}</p>
+<p class="counter__courses" *ngIf="!this.spinner && this.showFilteredResults">Resultados de la busqueda: {{ this.countCourses }}</p>
 <h2>Cursos disponibles:</h2>
 <!-- <h2 *ngIf="!this.spinner && this.showFilteredResults">Cursos disponibles:</h2> -->
 <app-spinner *ngIf="this.spinner"></app-spinner>

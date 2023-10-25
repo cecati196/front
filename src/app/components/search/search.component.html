@@ -1,4 +1,4 @@
-<form (keyup)="search(txtPharse.value)">
+<div>
     <p>Buscar por curso, especialidad o profesor: </p>
-    <input type="search" #txtPharse>
-</form>
+    <input type="search" [formControl]="phrase">
+</div>
