@@ -5,9 +5,9 @@
             <button class="carousel__previous" aria-label="Anterior" (click)="prevImage()">
                 <i class="fa-solid fa-circle-arrow-left"></i>
             </button>
-            <div class="carousel__list" #carousel>
+            <div class="carousel__list">
                     <picture class="container__picture" *ngFor="let img of images; let i = index">
-                        <img #img [srcset]="img.imageURL" media="100%"
+                        <img #img [srcset]="img.imageURL"
                         [alt]="img.name" class="gallery__img">
                     </picture>
             </div>
@@ -15,7 +15,5 @@
                 <i class="fa-solid fa-circle-arrow-right"></i>
             </button>
         </div>
-        <div role="tablist" class="carousel__indicators"></div>
     </div>
-    <div class="preloader"></div>
 </section>

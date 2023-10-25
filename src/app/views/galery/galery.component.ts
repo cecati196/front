@@ -27,7 +27,7 @@ export class GaleryComponent implements AfterViewInit {
         this.imagesWidth.push(width)
       });      
     }
-    console.log(this.imagesWidth);
+    
     
   }
 
@@ -46,14 +46,11 @@ export class GaleryComponent implements AfterViewInit {
   }
 
   updateCarousel() {
-    console.log(this.imagesWidth[this.currentIndex]);
-
     //const translateX = -this.imagesWidth[this.currentIndex]; 
-    const translateX = -this.currentIndex * 100; 
+    const translateX = (-this.currentIndex * this.imagesWidth[this.currentIndex]) / 100; 
     if (this.carousel) {
       this.carousel.nativeElement.style.transform = `translateX(${translateX}%)`;
     }
-    console.log(translateX);
     
   }
 }
