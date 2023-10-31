@@ -7,12 +7,14 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit{
+  isActivateSearch = false;
   ngOnInit(): void {
     this.phrase.valueChanges.subscribe( value =>{
       if (value !== '') {
+        this.isActivateSearch = true;
         this.inputChange.emit(value);
       } else {
-        
+        this.isActivateSearch = false;
         this.inputClean.emit(false);
       }
     })

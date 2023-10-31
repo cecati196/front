@@ -1,4 +1,8 @@
 <div>
     <p>Buscar por curso, especialidad o profesor: </p>
-    <input type="search" [formControl]="phrase">
+    <input 
+        type="search" 
+        [formControl]="phrase" 
+        [ngClass]="{ 'activate__search': this.isActivateSearch}"
+    >
 </div>

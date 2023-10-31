@@ -23,3 +23,7 @@ input:focus-visible {
 input:focus {
     border: 3px solid var(--fontColor2);
 }
+
+.activate__search {
+    background-color: var(--mainColor2);
+}

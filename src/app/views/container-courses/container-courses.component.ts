@@ -29,10 +29,14 @@ export class ContainerCoursesComponent implements OnInit {
         this.allCourses.push(course);
       }
       this.createSpecialities(this.allCourses);
-      this.filteredCourses = [...this.allCourses];
-      this.countCourses =  this.allCourses.length;
+      this.loadAllCourses();
       this.spinner = !this.spinner;
     })
+  }
+
+  loadAllCourses(){
+    this.filteredCourses = [...this.allCourses];
+    this.countCourses =  this.allCourses.length;
   }
 
   private assignImage(course:Course) {
@@ -63,18 +67,19 @@ export class ContainerCoursesComponent implements OnInit {
   }
 
   filterResults(searchPhrase: string) {
-    this.filteredCourses = this.allCourses.filter(course =>
+    this.filteredCourses = this.allCourses.filter(course => 
       course.courseName.toLowerCase().includes(searchPhrase.toLowerCase())
-      || course.professor.toLowerCase().includes(searchPhrase.toLowerCase()) 
-      || course.specialty.toLowerCase().includes(searchPhrase.toLowerCase())
-    );
+      || course.professor.toLowerCase().includes(searchPhrase.toLowerCase())
+      || course.specialty.toLowerCase().includes(searchPhrase.toLowerCase()) );
     this.phraseSearch = searchPhrase;
     this.countCourses = this.filteredCourses.length;
     this.showFilteredResults = true;
   }
+
   cleanResults(value:boolean){
     if (!value) {
-      this.showFilteredResults = false;      
+      this.loadAllCourses();
+      this.showFilteredResults = value;      
     }
   }
 }

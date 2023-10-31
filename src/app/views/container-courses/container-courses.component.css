@@ -1,9 +1,15 @@
 .section__courses {
+    border-radius: 5px;
+    font-size: 1.6rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1.6rem;    
+    margin: 0 5%;
+}
+
+.activate__search {
+    background-color: var(--mainColor2);
 }
 
 h2 {
@@ -128,15 +134,9 @@ app-search {
     font-size: 1.8rem;
     padding-bottom: 15px;
     text-align: center;
+    min-width: 300px;
     max-width: 400px;
     min-height: 470px;
-}
-
-.course__more-information {
-    display: flex;
-    flex-flow: wrap;
-    justify-content: center;
-    align-items: flex-start;
 }
 
 .course > img {
@@ -153,8 +153,13 @@ app-search {
 .containerCourse--profesor{
     text-transform: capitalize;
     font-size: 2rem;
-    margin-top: 10px;
+    margin: 10px 0;
     padding: 0px 15px;
+}
+
+.paragraphMoreInfo {
+    min-height: 100px;
+    padding: 5px 0;
 }
 
 .containerCourse--info {
@@ -169,6 +174,7 @@ app-search {
     width: 200px;
     padding: 3px;
     cursor: pointer;
+    animation: increase 6s ease 0s infinite normal forwards;
 }
 
 .containerCourse--info i {
@@ -176,21 +182,16 @@ app-search {
     padding-left: 5px;
 }
 
-.button-inscription {
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.button-inscription > img {
-    margin-bottom: 0;
-    border-radius: 15px;
-    height: 80px;
-}
-
-.button-inscription > p {
-    color: var(--fontColor);
-    font-size: 1.6rem;
-    font-weight: 700;
+@keyframes increase {
+    0% {
+        transform: scale(0.9);
+    }
+    50% {
+        transform:scale(1.1);
+    }
+    100% {
+        transform:scale(0.9);
+    }
 }
 
 @media (min-width: 1024px) {
