@@ -1,0 +1,29 @@
+p {
+    color: var(--fontColor);
+    font-size: 1.8rem;
+    padding-bottom: 7px;
+}
+
+input {
+    height: 45px;
+    min-width: 320px;
+    background-color: var(--mainColor);
+    border: 2px solid var(--fontColor);
+    border-radius: 2em;
+    color: var(--fontColor);
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.9rem;
+    padding: 10px;
+}
+
+input:focus-visible {
+    border: 3px solid var(--fontColor2);
+}
+input:focus {
+    border: 3px solid var(--fontColor2);
+}
+
+.activate__search {
+    background-color: var(--mainColor2);
+}

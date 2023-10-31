@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { CoursesService } from '../../services/courses.service';
 import { Course } from 'src/app/shared/interfaces/course.interface';
-import { Specialitie } from 'src/app/shared/interfaces/specialities';
 import { CONSTANTS } from 'src/app/shared/constants';
 
 @Component({
@@ -10,27 +9,34 @@ import { CONSTANTS } from 'src/app/shared/constants';
   templateUrl: './container-courses.component.html',
   styleUrls: ['./container-courses.component.css']
 })
-export class ContainerCoursesComponent implements OnInit{
+export class ContainerCoursesComponent implements OnInit {
   constructor(
     private coursesService: CoursesService
     ){}
     
   public spinner = true;
   public showMoreContent: { [key:number]:boolean } = {};
-  public courses:Course[] = [];
-  public specialities:Specialitie = {
-    foodAndDrinks: [],
-  };
+  public allCourses:Course[] = [];
+  public filteredCourses: Course[] = [];
+  public showFilteredResults = false;
+  public countCourses: number = 0;
+  public phraseSearch = '';
 
   ngOnInit(): void {
     this.coursesService.getCourses().subscribe( (res) => {
       const { data } = res;
       for (const course of data) {
-        this.courses.push(course);
+        this.allCourses.push(course);
       }
-      const specialities = this.createSpecialities(this.courses);
+      this.createSpecialities(this.allCourses);
+      this.loadAllCourses();
       this.spinner = !this.spinner;
     })
+  }
+
+  loadAllCourses(){
+    this.filteredCourses = [...this.allCourses];
+    this.countCourses =  this.allCourses.length;
   }
 
   private assignImage(course:Course) {
@@ -38,6 +44,8 @@ export class ContainerCoursesComponent implements OnInit{
       if (CONSTANTS.logos[i].name === course.specialty) {
         course.image = CONSTANTS.logos[i].url;
         break;
+      } else  {
+        course.image = "https://storage.googleapis.com/images-cecati196/assets/logoDefault.png";
       }
     }
     return course;
@@ -56,32 +64,22 @@ export class ContainerCoursesComponent implements OnInit{
       }
       this.assignImage(objCourse);
     }
-    const specialities = specialitiesNames.map( speciality => {
-      const courseForSpeciality:Course[] = [];
-      for (const key in courses) {
-        const course = courses[key];
-        if (speciality === course.specialty) {
-          courseForSpeciality.push(course);
-        }
-      }
-      //console.log(courseForSpeciality);
-      return courseForSpeciality;
-      // console.log(course)
-      // const nameSpeciality = Object.keys(course);
-      // console.log(nameSpeciality)
-      // if (!array[0]) {
-      //   console.log("entrando")
-      //   }
-      })
-      //console.log(specialities)
-      if (specialities[0]) {
-        
-      }
-  return specialities;
-    
-    // if (image == undefined) {                
-    //     image = "LogoCecatiEspecialidades.png";
-    // }                 
   }
 
+  filterResults(searchPhrase: string) {
+    this.filteredCourses = this.allCourses.filter(course => 
+      course.courseName.toLowerCase().includes(searchPhrase.toLowerCase())
+      || course.professor.toLowerCase().includes(searchPhrase.toLowerCase())
+      || course.specialty.toLowerCase().includes(searchPhrase.toLowerCase()) );
+    this.phraseSearch = searchPhrase;
+    this.countCourses = this.filteredCourses.length;
+    this.showFilteredResults = true;
+  }
+
+  cleanResults(value:boolean){
+    if (!value) {
+      this.loadAllCourses();
+      this.showFilteredResults = value;      
+    }
+  }
 }

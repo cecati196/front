@@ -107,10 +107,6 @@ export const CONSTANTS = {
             imageURL:'https://storage.googleapis.com/images-cecati196/galeria/2.jpg',
         },
         { 
-            name:'3',
-            imageURL:'https://storage.googleapis.com/images-cecati196/galeria/3.jpg',
-        },
-        { 
             name:'4',
             imageURL:'https://storage.googleapis.com/images-cecati196/galeria/4.jpg',
         },
@@ -133,6 +129,10 @@ export const CONSTANTS = {
         { 
             name:'9',
             imageURL:'https://storage.googleapis.com/images-cecati196/galeria/9.jpg',
+        },
+        { 
+            name:'3',
+            imageURL:'https://storage.googleapis.com/images-cecati196/galeria/3.jpg',
         },
     ]
 }
