@@ -66,14 +66,25 @@ export class ContainerCoursesComponent implements OnInit {
     }
   }
 
-  filterResults(searchPhrase: string) {
-    this.filteredCourses = this.allCourses.filter(course => 
-      course.courseName.toLowerCase().includes(searchPhrase.toLowerCase())
-      || course.professor.toLowerCase().includes(searchPhrase.toLowerCase())
-      || course.specialty.toLowerCase().includes(searchPhrase.toLowerCase()) );
-    this.phraseSearch = searchPhrase;
+  filterResults(phrase: string) {
+    this.filteredCourses = this.allCourses.filter(course => {
+      return [
+        this.phraseFilter(course.courseName, phrase),
+        this.phraseFilter(course.professor, phrase),
+        this.phraseFilter(course.searchPhrase, phrase),
+        this.phraseFilter(course.specialty, phrase),
+      ].some(value => value === true);
+    });
+    this.phraseSearch = phrase;
     this.countCourses = this.filteredCourses.length;
     this.showFilteredResults = true;
+  }
+
+  phraseFilter(field:string, phrase:string){
+    if (field !== undefined) {
+      return field.toLowerCase().includes(phrase.toLowerCase())
+    }
+    return false;
   }
 
   cleanResults(value:boolean){
