@@ -13,6 +13,7 @@ export interface Course {
     hours: string;
     courseType: string;
     courseModality: string;
+    searchPhrase: string;
     observations: string;
     image?: string
 }
