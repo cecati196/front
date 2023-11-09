@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { Question } from 'src/app/shared/interfaces/question.interface';
 
-import { CONSTANTS } from '../../shared/constants';
+import { CONSTANTS } from '../../shared/CONSTANTS';
 
 @Component({
   selector: 'app-card-questions',

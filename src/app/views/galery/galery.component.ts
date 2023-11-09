@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild, QueryList, AfterViewInit, ViewChildren } from '@angular/core';
 import { cilArrowCircleLeft, cilArrowCircleRight } from '@coreui/icons';
 
-import { CONSTANTS } from '../../shared/constants';
+import { CONSTANTS } from '../../shared/CONSTANTS';
 import { Images } from 'src/app/shared/interfaces/image.interface';
 
 

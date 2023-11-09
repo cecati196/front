@@ -9,7 +9,9 @@
                 <input type="checkbox" [(ngModel)]="showQuestion[i]">
             </label>
             <div [ngClass]="{'question--answer':showQuestion[i], 'question--answer--hide': !showQuestion[i]}">
-                {{ element.answer}}
+                <p *ngFor="let item of element.answer">
+                    {{ item }}
+                </p>
             </div>           
         </div>
     

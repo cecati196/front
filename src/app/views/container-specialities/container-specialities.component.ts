@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
 import { Course } from 'src/app/shared/interfaces/course.interface';
-import { CONSTANTS } from 'src/app/shared/constants';
+import { CONSTANTS } from 'src/app/shared/CONSTANTS';
 
 @Component({
   selector: 'app-container-specialities',
@@ -21,7 +21,7 @@ export class ContainerSpecialitiesComponent {
       for (const course of data) {
         this.courses.push(course);
       }
-      const specialities = this.createSpecialities(this.courses);
+      this.createSpecialities(this.courses);
     })
   }
 
@@ -44,23 +44,10 @@ export class ContainerSpecialitiesComponent {
       }
       console.log(courseForSpeciality);
       return courseForSpeciality;
-      // console.log(course)
-      // const nameSpeciality = Object.keys(course);
-      // console.log(nameSpeciality)
-      // if (!array[0]) {
-      //   console.log("entrando")
-      //   }
     })
-      //console.log(specialities)
-    if (specialities[0]) {
-      
-    }
     return specialities;
-    
-    // if (image == undefined) {                
-    //     image = "LogoCecatiEspecialidades.png";
-    // }                 
   }
+
   private assignImage(course:Course) {
     for (let i = 0; i < CONSTANTS.logos.length; i++) {
       if (CONSTANTS.logos[i].name === course.specialty) {
