@@ -29,3 +29,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Deploy with angular-cli-ghpages
 Use Command
 `ng deploy --base-href="https://cecati196.github.io/front/"`
+
+`ng deploy --base-href="https://cecati196.edu.mx/"`
