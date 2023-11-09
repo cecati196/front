@@ -1,6 +1,6 @@
-import { SPECIALTIES } from "./specialities";
+import { SPECIALTIES } from "./SPECIALTIES";
 
-export const CONSTANTS = {    
+export const CONSTANTS = {
     questions: [
         {
             question: '¿Tengo que pagar inscripción?',
@@ -22,14 +22,14 @@ export const CONSTANTS = {
             question: '¿Que requisitos debo cubrir para inscribirme?',
             answer: [
                 '2 copias de tu CURP',
-                '1 copia de Acta de Nacimiento',
-                '1 copia de Comprobante de Domicilio (reciente)', 
-                '1 copia de Comprobante de Estudios, (último grado)',
-                '2 Fotografías Tamaño Infantil, (blanco y negro / color)'
+                '1 copia de tu Acta de Nacimiento',
+                '1 copia de un Comprobante de Domicilio (reciente)', 
+                '1 copia de tu Comprobante de Estudios (último grado)',
+                '2 Fotografías Tamaño Infantil, (B/N o Color)'
             ]
         },        
     ],
-    logos:[
+    logos:[       
         {
             name: SPECIALTIES.foodAndDrinks,
             url: 'https://storage.googleapis.com/images-cecati196/assets/AlimentosyBebidas1.png'
@@ -107,6 +107,7 @@ export const CONSTANTS = {
             url: ''
         },
     ],
+    logoDefault: 'https://storage.googleapis.com/images-cecati196/assets/logoDefault.png',
     images: [
         { 
             name:'1',

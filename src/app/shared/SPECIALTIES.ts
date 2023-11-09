@@ -9,7 +9,7 @@ export const SPECIALTIES = {
     digitalGraphic: 'Expresión Gráfica Digital',
     computing: 'Informática',
     technicalSupport: 'Soporte Técnico a Equipos y Sistemas Computacionales',
-    english: 'Uso de la Lengua Inglesa en Diversos Contextos ',
+    english: 'Uso de la Lengua Inglesa en Diversos Contextos',
     bodyWork: 'Diseño e Imagen de la Carrocería',
     tourist: 'Gestión y Venta de Servicios Turísticos',
     hospitality: 'Hotelería',

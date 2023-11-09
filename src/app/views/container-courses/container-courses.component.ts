@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CoursesService } from '../../services/courses.service';
 import { Course } from 'src/app/shared/interfaces/course.interface';
-import { CONSTANTS } from 'src/app/shared/constants';
+import { CONSTANTS } from 'src/app/shared/CONSTANTS';
 
 @Component({
   selector: 'app-container-courses',
@@ -45,7 +45,7 @@ export class ContainerCoursesComponent implements OnInit {
         course.image = CONSTANTS.logos[i].url;
         break;
       } else  {
-        course.image = "https://storage.googleapis.com/images-cecati196/assets/logoDefault.png";
+        course.image = CONSTANTS.logoDefault;
       }
     }
     return course;

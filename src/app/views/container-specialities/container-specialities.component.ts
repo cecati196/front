@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
 import { Course } from 'src/app/shared/interfaces/course.interface';
-import { CONSTANTS } from 'src/app/shared/constants';
+import { CONSTANTS } from 'src/app/shared/CONSTANTS';
 
 @Component({
   selector: 'app-container-specialities',
