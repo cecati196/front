@@ -16,6 +16,7 @@ import { MenuComponent } from './shared/menu/menu.component';
 import { ContainerSpecialitiesComponent } from './views/container-specialities/container-specialities.component';
 import { SearchComponent } from './components/search/search.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { NotFoundPagesComponent } from './views/not-found-pages/not-found-pages.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     MenuComponent,
     ContainerSpecialitiesComponent,
     SearchComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    NotFoundPagesComponent
   ],
   imports: [
     BrowserModule,
