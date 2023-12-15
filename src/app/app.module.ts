@@ -17,6 +17,8 @@ import { ContainerSpecialitiesComponent } from './views/container-specialities/c
 import { SearchComponent } from './components/search/search.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { NotFoundPagesComponent } from './views/not-found-pages/not-found-pages.component';
+import { ControlEscolarComponent } from './views/control-escolar/control-escolar.component';
+import { LoginComponent } from './views/login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { NotFoundPagesComponent } from './views/not-found-pages/not-found-pages.
     ContainerSpecialitiesComponent,
     SearchComponent,
     SpinnerComponent,
-    NotFoundPagesComponent
+    NotFoundPagesComponent,
+    ControlEscolarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

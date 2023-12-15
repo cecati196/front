@@ -1,0 +1,22 @@
+<form
+    v-on:submit="login"
+    v-if=!auth
+>
+    <label for="username">
+        Usuario
+    </label>
+    <input 
+        type="text"
+        name="username" 
+        v-on:focus="clearMessage"
+    >
+    <label for="password">
+        Contraseña
+    </label>
+    <input 
+        type="password"
+        name="password"
+        v-on:focus="clearMessage"
+    >
+    <button>Iniciar Sesión</button>
+</form>
