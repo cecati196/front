@@ -1,0 +1,133 @@
+.container-new-course-form{
+    text-align: center;
+  
+}
+
+p {
+    color: var(--contrastColor);
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 10px;
+}
+
+form {
+    font-size: 1.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--fontColor);
+}
+
+label {
+    min-width: 320px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+span {
+    margin-right: 5px;
+}
+
+input {
+    min-width: 220px;
+    max-width: 280px;
+    padding: 10px 5px;
+    border-radius: 5px;
+    border: 2px solid var(--contrastColor);
+    margin: 7px 2px;
+    color: var(--fontColor);
+    background: linear-gradient(180deg, var(--mainColor), var(--mainColor2));
+}
+
+textarea {
+    background: linear-gradient(180deg, var(--mainColor), var(--mainColor2));
+    border-radius: 5px;
+    height: 70px;
+    border: 2px solid var(--contrastColor);
+    color: var(--fontColor);
+    resize: none;
+}
+
+input::placeholder {
+    color: var(--fontColor2);
+}
+
+select {
+    border: 2px solid var(--contrastColor);
+    border-radius: 5px;
+    color: var(--fontColor2);
+    padding: 5px 15px;
+    margin: 10px 5px;
+    min-width: 200px;
+    max-width: 300px;
+    background: linear-gradient(180deg, var(--mainColor), var(--mainColor2));
+}
+
+select option {
+    background-color: var(--mainColor);
+}
+
+input::-webkit-file-upload-button {
+    border: 2px solid var(--contrastColor);
+    background: linear-gradient(0deg, var(--contrastColor), var(--contrastColor2));
+    border-radius: 3px;
+    color: var(--mainColor);
+    padding: 10px;
+}
+
+input[type=radio] {
+    min-width: 30px;
+    height: 15px;
+    margin: 1px;
+}
+
+.form-cost {
+    margin-left: 5px;
+    width: 3px;
+}
+
+.form-cost::after {
+    content: "$";
+}
+
+.required::after {
+    content: "*";
+}
+
+.legend-required {
+    color: var(--fontColor);
+    font-size: 1.1rem;
+    padding: 0;
+}
+
+.container-buttons {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    align-self: center;
+    background-color: var(--contrastColor);
+    border-radius: 2em;
+    color: var(--mainColor);
+    cursor: pointer;
+    margin: 25px auto;
+    padding: 12px;
+}
+
+.container-buttons .cancel {
+    background-color: var(--fontColor2);
+    color: var(--mainColor);
+}
+
+@media (min-width: 150px) and (max-width: 620px) {
+    .container-buttons {
+        flex-direction: column-reverse;
+    }
+}
+
+

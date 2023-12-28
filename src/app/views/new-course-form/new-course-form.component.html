@@ -1,0 +1,123 @@
+<div class="container-new-course-form">
+    <p class="message">Registra un nuevo curso para el Sitio web:</p>
+    <form [formGroup]="courseForm" id="addCourse" (submit)="addNewCourse()">
+        <label for="specialitie">
+            <span class="required">Especialidad.</span>
+            <select formControlName="specialitie">
+                <option *ngFor="let name of listSpecialties" [ngValue]="name">
+                    {{ name }}
+                </option> 
+            </select>
+        </label>
+        
+        <label for="nameCourse">
+            <span class="required">Nombre del curso:</span>
+            <input type="text" name="nameCourse" formControlName="nameCourse">
+        </label>
+    
+        <label for="typeCourse">
+            <span class="required">Tipo de Curso:</span>
+            <select name="typeCourse" formControlName="typeCourse">
+                <option *ngFor="let type of typeCourse" [ngValue]="type">
+                    {{ type }}
+                </option> 
+            </select>
+        </label>
+    
+        <label for="profesor">
+            <span class="required">Profesor:</span>
+            <input list="profesor" name="profesor" formControlName="profesor">
+            <datalist id="profesor">
+                <option *ngFor="let profesor of listProfesor" [ngValue]="profesor">
+                    {{ profesor }}
+                </option>                
+            </datalist>
+        </label>
+    
+        <label for="startDate">
+            <span class="required">Fecha de Inicio del curso:</span>
+            <input type="date" name="startDate" formControlName="startDate">
+        </label>
+        <label for="endDate">
+            <span class="required">Fecha de Termino del curso:</span>
+            <input type="date" name="endDate" formControlName="endDate">
+        </label>
+    
+        <label for="modality">
+            <span class="required">Modalidad:</span>
+            <select name="modality" formControlName="modality">
+                <option *ngFor="let type of typesModality" [ngValue]="type">
+                    {{ type }}
+                </option>
+            </select>
+        </label>
+    
+        <label for="daysOfClass">
+            <span class="required">Dias de Clase:</span>
+            <select name="daysOfClass" formControlName="daysOfClass">
+                <option *ngFor="let days of daysOfClass" [ngValue]="days">
+                    {{ days }}
+                </option>
+            </select>
+        </label>
+    
+        <label for="startTime">
+            <span class="required">Horario de clases. Inicia:</span>
+            <input type="time" name="startTime" id="" formControlName="startTime">
+        </label>
+    
+        <label for="endTime">
+            <span class="required">Horario de clases. Termina:</span>
+            <input type="time" name="endTime" id="" formControlName="endTime">
+        </label>
+
+        <label for="totalHours">
+            <span class="required">Total de HORAS del curso:</span>
+            <input type="number" name="totalHours" formControlName="totalHours">
+        </label>
+    
+        <label for="cost">
+            <span class="required">Costo:</span>
+            <span class="form-cost"></span>
+            <input type="number" name="cost" formControlName="cost">
+        </label>
+    
+        <label for="objective">
+            <span>Objetivo:</span>
+            <textarea name="objective" formControlName="objective">
+            </textarea>
+        </label>
+        
+        <label for="thematicContent">
+            <span>Contenido Temático:</span>
+            <textarea name="thematicContent" cols="30" rows="10" formControlName="thematicContent">
+            </textarea>
+        </label>
+
+        <label for="observations">
+            <span>Observaciones:</span>
+            <textarea name="observations" cols="30" rows="10" formControlName="observations">
+            </textarea>
+        </label>
+
+        <label for="phrase">
+            <span>Palabra o Frase de Busqueda:</span>
+            <input type="text" name="phrase" #inputPhrase [value]="phareInput">
+            <button type="button" (click)="newPhrase(inputPhrase.value)">Añadir palabra</button>
+            <p >{{ phrases.toString() }}</p>
+        </label>
+        
+        <p class="legend-required">* Campos Obligatorios</p>
+    </form>
+    <div class="container-buttons">
+        <button 
+            class="cancel"
+            (click)="cancelAddCourse()"
+        >
+        CANCELAR Y REGRESAR
+        </button>
+        <button type="submit" form="addCourse">
+            Registrar Curso
+        </button>
+    </div>
+</div>

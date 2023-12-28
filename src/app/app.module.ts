@@ -19,6 +19,9 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { NotFoundPagesComponent } from './views/not-found-pages/not-found-pages.component';
 import { ControlEscolarComponent } from './views/control-escolar/control-escolar.component';
 import { LoginComponent } from './views/login/login.component';
+import { NewCourseFormComponent } from './views/new-course-form/new-course-form.component';
+import { EditCourseFormComponent } from './views/edit-course-form/edit-course-form.component';
+import { DeleteCourseComponent } from './views/delete-course/delete-course.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { LoginComponent } from './views/login/login.component';
     SpinnerComponent,
     NotFoundPagesComponent,
     ControlEscolarComponent,
-    LoginComponent
+    LoginComponent,
+    NewCourseFormComponent,
+    EditCourseFormComponent,
+    DeleteCourseComponent
   ],
   imports: [
     BrowserModule,

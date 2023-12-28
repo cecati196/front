@@ -18,4 +18,13 @@ export const SPECIALTIES = {
     autoElectronic: 'Mantenimiento al Sistema Electrónico Automotriz',
     autoElectromechanical: 'Mantenimiento Electromecánico del Automóvil',
     dieselMechanics: 'Mecánica Diesel',
-}
+};
+
+export const PROFESOR = [
+    'Amanda Glez',
+    'Gerardo Mtz.',
+    'Luis Pacheco',
+    'Genaro Gatusso',
+    'Michael Jordan',
+    'Elizabeth Banks',
+];
