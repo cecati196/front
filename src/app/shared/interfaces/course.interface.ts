@@ -1,8 +1,8 @@
 export interface Course {
     courseName: string;
     specialty: string;
-    thematicContent: string;
-    objective: string;
+    thematicContent?: string;
+    objective?: string;
     startTime: string;
     endTime: string;
     startDate: string;
@@ -14,6 +14,6 @@ export interface Course {
     courseType: string;
     courseModality: string;
     searchPhrase: string;
-    observations: string;
+    observations?: string;
     image?: string
 }

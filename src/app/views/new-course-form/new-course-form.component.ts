@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CoursesService } from 'src/app/services/courses.service';
 import { PROFESOR, SPECIALTIES } from 'src/app/shared/SPECIALTIES';
+import { Course } from 'src/app/shared/interfaces/course.interface';
 
 @Component({
   selector: 'app-new-course-form',
@@ -10,53 +12,75 @@ import { PROFESOR, SPECIALTIES } from 'src/app/shared/SPECIALTIES';
 export class NewCourseFormComponent {
   @Output() closeNewCourseForm: EventEmitter<boolean> = new EventEmitter;
   public courseForm: FormGroup;
-  public course = {};
+  public course:Course;
   
   public phrases: string[] = [];
   public listSpecialties: string[] = [];
   public listProfesor = PROFESOR;
   public phareInput: string = '';
 
-  constructor(
-    private formBuilder: FormBuilder
-  ){
+  constructor( 
+    private formBuilder: FormBuilder, 
+    private coursesService: CoursesService
+  ) {
     this.buildSpecialties();
     this.courseForm = this.formBuilder.group({
-      specialitie: ['', Validators.required],
-      nameCourse: ['', Validators.required],
-      typeCourse: ['', Validators.required],
-      profesor: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-      modality: ['', Validators.required],
-      daysOfClass: ['', Validators.required],
+      courseName: ['', Validators.required],
+      specialty: ['', Validators.required],
+      thematicContent: [''],
+      objective: [''],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
-      totalHours: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      daysOfClasses: ['', Validators.required],
       cost: ['', Validators.required],
-      objective: [''],
-      thematicContent: [''],
+      professor: ['', Validators.required],
+      hours: ['', Validators.required],
+      courseType: ['', Validators.required],
+      courseModality: ['', Validators.required],
+      searchPhrase: [''],
       observations: [''],
-      pharse: [''],
-    })
+    });
+    this.course = {
+      courseName: '',
+      specialty: '',
+      thematicContent: '',
+      objective: '',
+      startTime: '',
+      endTime: '',
+      startDate: '',
+      endDate: '',
+      daysOfClasses: '',
+      cost: '',
+      professor: '',
+      hours: '',
+      courseType: '',
+      courseModality: '',
+      searchPhrase: '',
+      observations: ''
+    }
   }
 
   buildSpecialties(){
-    for (let [key, value] of Object.entries(SPECIALTIES)) {      
+    for (let [, value] of Object.entries(SPECIALTIES)) {
       this.listSpecialties.push(value);
     }
   }
   
   cancelAddCourse(){
-    console.log("ENTRA!!!");    
     this.closeNewCourseForm.emit(false)
   }
 
   addNewCourse(){
     if (this.courseForm.status === 'VALID') {
-      console.log(this.courseForm.value)
+      this.course = { ...this.courseForm.value };
+      this.coursesService.newCourse(this.course).subscribe( (res:any)=>{
+        console.log(res)
+        alert(res.message);
+      });
     } else {
-      console.log("completa los campos obligatorios");
+      alert("Completa los campos obligatorios");
     }
   }
   
