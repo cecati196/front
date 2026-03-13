@@ -1,6 +1,5 @@
-.container-new-course-form{
+.container-new-course-form {
     text-align: center;
-  
 }
 
 p {
@@ -12,19 +11,20 @@ p {
 
 form {
     font-size: 1.6rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 20px;
     color: var(--fontColor);
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 16px;
 }
 
 label {
-    min-width: 320px;
-    padding: 10px;
+    padding: 8px 10px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 4px;
 }
 
 span {
@@ -32,63 +32,86 @@ span {
 }
 
 input {
-    min-width: 220px;
-    max-width: 280px;
-    padding: 10px 5px;
+    width: 100%;
+    padding: 10px 8px;
     border-radius: 5px;
     border: 2px solid var(--contrastColor);
-    margin: 7px 2px;
     color: var(--fontColor);
-    background: linear-gradient(180deg, var(--mainColor), var(--mainColor2));
+    background: var(--mainColor);
+    box-sizing: border-box;
 }
 
 textarea {
-    background: linear-gradient(180deg, var(--mainColor), var(--mainColor2));
+    background: var(--mainColor);
     border-radius: 5px;
-    height: 70px;
+    min-height: 90px;
     border: 2px solid var(--contrastColor);
     color: var(--fontColor);
-    resize: none;
+    resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
 }
 
 input::placeholder {
     color: var(--fontColor2);
 }
 
+select {
+    border: 2px solid var(--contrastColor);
+    border-radius: 5px;
+    color: var(--fontColor2);
+    padding: 10px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--mainColor);
+}
+
+select option {
+    background-color: var(--mainColor);
+}
+
+/* Campos de ancho completo */
+.full-width,
 .days-of-classes {
-    max-width: 345px;
+    grid-column: 1 / -1;
+}
+
+.days-of-classes {
     flex-direction: column;
 }
 
 .days-of-classes div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 3px;
+    gap: 6px 20px;
+    padding: 6px 0;
 }
 
 .days-of-classes input[type='checkbox'] {
-    margin: 5px 0 5px 10px;
-    min-width: 30px;
+    min-width: 20px;
+    margin: 0;
+    width: auto;
 }
 
 .days-of-classes div > span {
     padding: 3px 5px 3px 0;
 }
 
-select {
-    border: 2px solid var(--contrastColor);
-    border-radius: 5px;
-    color: var(--fontColor2);
-    padding: 5px 15px;
-    margin: 10px 5px;
-    min-width: 200px;
-    max-width: 300px;
-    background: linear-gradient(180deg, var(--mainColor), var(--mainColor2));
+/* Fila de búsqueda: input + botón en línea */
+.search-phrase-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
-select option {
-    background-color: var(--mainColor);
+.search-phrase-row input {
+    flex: 1;
+}
+
+.search-phrase-row button {
+    flex-shrink: 0;
+    margin: 0;
 }
 
 input::-webkit-file-upload-button {
@@ -102,12 +125,21 @@ input::-webkit-file-upload-button {
 input[type=radio] {
     min-width: 30px;
     height: 15px;
-    margin: 1px;
+    width: auto;
+}
+
+.cost-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cost-row input {
+    flex: 1;
 }
 
 .form-cost {
-    margin-left: 5px;
-    width: 3px;
+    flex-shrink: 0;
 }
 
 .form-cost::after {
@@ -119,15 +151,22 @@ input[type=radio] {
 }
 
 .legend-required {
+    grid-column: 1 / -1;
     color: var(--fontColor);
     font-size: 1.1rem;
     padding: 0;
+    text-align: left;
+    padding-left: 10px;
 }
 
 .container-buttons {
-    width: 100vw;
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    padding: 0 16px;
+    box-sizing: border-box;
 }
 
 button {
@@ -137,7 +176,7 @@ button {
     color: var(--mainColor);
     cursor: pointer;
     margin: 25px auto;
-    padding: 12px;
+    padding: 12px 20px;
 }
 
 .container-buttons .cancel {
@@ -145,10 +184,12 @@ button {
     color: var(--mainColor);
 }
 
-@media (min-width: 150px) and (max-width: 620px) {
+@media (max-width: 620px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+
     .container-buttons {
         flex-direction: column-reverse;
     }
 }
-
-

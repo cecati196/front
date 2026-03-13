@@ -64,7 +64,7 @@
                 <input type="checkbox" name="dia[]" value="Domingo" onclick="estado();"/><span>Domingo</span>
                 <input type="checkbox" name="dia[]" value="Lun-Vie" onclick="estado();"/><span>Lun-Vie</span>
             </div>
-            <p>Aui van los dias select</p>
+            <p>Aqui van los dias select</p>
             <!-- <select name="daysOfClasses" formControlName="daysOfClasses">
                 <option *ngFor="let days of daysOfClass" [ngValue]="days">
                     {{ days }}
@@ -89,32 +89,36 @@
     
         <label for="cost">
             <span class="required">Costo:</span>
-            <span class="form-cost"></span>
-            <input type="number" name="cost" formControlName="cost">
+            <div class="cost-row">
+                <span class="form-cost"></span>
+                <input type="number" name="cost" formControlName="cost">
+            </div>
         </label>
     
-        <label for="objective">
+        <label for="objective" class="full-width">
             <span>Objetivo:</span>
             <textarea name="objective" formControlName="objective">
             </textarea>
         </label>
-        
-        <label for="thematicContent">
+
+        <label for="thematicContent" class="full-width">
             <span>Contenido Temático:</span>
             <textarea name="thematicContent" cols="30" rows="10" formControlName="thematicContent">
             </textarea>
         </label>
 
-        <label for="observations">
+        <label for="observations" class="full-width">
             <span>Observaciones:</span>
             <textarea name="observations" cols="30" rows="10" formControlName="observations">
             </textarea>
         </label>
 
-        <label for="searchPhrase">
+        <label for="searchPhrase" class="full-width">
             <span>Palabra o Frase de Busqueda:</span>
-            <input type="text" name="searchPhrase" #inputPhrase [value]="phareInput">
-            <button type="button" (click)="newPhrase(inputPhrase.value)">Añadir palabra</button>
+            <div class="search-phrase-row">
+                <input type="text" name="searchPhrase" #inputPhrase [value]="phareInput">
+                <button type="button" (click)="newPhrase(inputPhrase.value)">Añadir palabra</button>
+            </div>
             <p >{{ phrases.toString() }}</p>
         </label>
         
