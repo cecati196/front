@@ -38,7 +38,7 @@ export class NewCourseFormComponent {
       professor: ['', Validators.required],
       hours: ['', Validators.required],
       courseType: ['', Validators.required],
-      courseModality: ['', Validators.required],
+      courseModality: ['Presencial', Validators.required],
       searchPhrase: [''],
       observations: [''],
     });
