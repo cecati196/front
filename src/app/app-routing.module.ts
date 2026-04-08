@@ -6,22 +6,29 @@ import { GaleryComponent } from './views/galery/galery.component';
 import { ContainerCoursesComponent } from './views/container-courses/container-courses.component';
 import { NotFoundPagesComponent } from './views/not-found-pages/not-found-pages.component';
 import { ControlEscolarComponent } from './views/control-escolar/control-escolar.component';
+import { LoginComponent } from './views/login/login.component';
+import { AuthCallbackComponent } from './views/auth-callback/auth-callback.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: 'inicio', component : HomeComponent },
-  { path: 'preguntas', component: CardQuestionsComponent },
-  { path: 'cursos', component: ContainerCoursesComponent },
-  { path: 'galeria', component: GaleryComponent},
-  { path: 'control-escolar', component: ControlEscolarComponent},
-  { path: '', redirectTo: '/inicio', pathMatch: 'full'},
-  { path: '**', component: NotFoundPagesComponent }
+  { path: 'inicio',          component: HomeComponent },
+  { path: 'preguntas',       component: CardQuestionsComponent },
+  { path: 'cursos',          component: ContainerCoursesComponent },
+  { path: 'galeria',         component: GaleryComponent },
+  { path: 'login',           component: LoginComponent },
+  { path: 'auth/callback',   component: AuthCallbackComponent },
+  {
+    path:        'control-escolar',
+    component:   ControlEscolarComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: '',   redirectTo: '/inicio', pathMatch: 'full' },
+  { path: '**', component: NotFoundPagesComponent },
 ];
 
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forRoot(routes)
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,9 +19,11 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { NotFoundPagesComponent } from './views/not-found-pages/not-found-pages.component';
 import { ControlEscolarComponent } from './views/control-escolar/control-escolar.component';
 import { LoginComponent } from './views/login/login.component';
+import { AuthCallbackComponent } from './views/auth-callback/auth-callback.component';
 import { NewCourseFormComponent } from './views/new-course-form/new-course-form.component';
 import { EditCourseFormComponent } from './views/edit-course-form/edit-course-form.component';
 import { DeleteCourseComponent } from './views/delete-course/delete-course.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,18 +42,25 @@ import { DeleteCourseComponent } from './views/delete-course/delete-course.compo
     NotFoundPagesComponent,
     ControlEscolarComponent,
     LoginComponent,
+    AuthCallbackComponent,
     NewCourseFormComponent,
     EditCourseFormComponent,
-    DeleteCourseComponent
+    DeleteCourseComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide:  HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi:    true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

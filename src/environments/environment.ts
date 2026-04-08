@@ -1,4 +1,7 @@
 export const environment = {
-production: true,
-apiUrl: 'https://us-south1-cecati196.cloudfunctions.net/c-196'
+  production:     true,
+  apiUrl:         'https://<SERVER_URL>',
+  authServiceUrl: 'https://<AUTH_SERVICE_URL>',
+  entraClientId:  '<ENTRA_CLIENT_ID>',
+  entraTenantId:  '<ENTRA_TENANT_ID>',
 };
