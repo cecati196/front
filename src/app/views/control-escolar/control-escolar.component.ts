@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService, AuthUser } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-control-escolar',
@@ -6,6 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./control-escolar.component.css']
 })
 export class ControlEscolarComponent {
+  user: AuthUser | null = null;
+
+  constructor(private auth: AuthService) {
+    this.auth.user$.subscribe(u => this.user = u);
+  }
+
+  logout(): void {
+    this.auth.logout();
+  }
   public isNewCourse = false; 
   public isEditCourse = false; 
   public isDeleteCourse = false; 
