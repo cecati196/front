@@ -1,10 +1,10 @@
 <!-- TODO: eliminar este banner cuando se confirme que el login funciona -->
 <div *ngIf="user" style="background:#e8f5e9;border:1px solid #a5d6a7;padding:12px 16px;margin-bottom:16px;border-radius:6px;font-family:monospace;font-size:13px">
   <strong>Sesión activa</strong><br>
-  Nombre: {{ user.displayName }}<br>
-  Email: {{ user.email }}<br>
+  Nombre: {{ user.name }}<br>
+  Usuario: {{ user.username }}<br>
   Rol: {{ user.role }}<br>
-  Escuela: {{ user.schoolDisplayName || '(sin escuela)' }}<br>
+  Escuela: {{ user.schoolName || '(sin escuela)' }}<br>
   <button (click)="logout()" style="margin-top:8px">Cerrar sesión</button>
 </div>
 

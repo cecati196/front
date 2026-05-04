@@ -37,3 +37,9 @@ button {
 	align-self: center;
 	cursor: pointer;
 }
+
+.error-msg {
+    color: #e53935;
+    font-size: 0.9rem;
+    margin: 4px 0;
+}

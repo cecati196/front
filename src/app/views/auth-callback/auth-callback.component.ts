@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-callback',
-  template: `<p style="text-align:center; margin-top: 4rem;">Iniciando sesión...</p>`,
+  template: ``,
 })
 export class AuthCallbackComponent implements OnInit {
-  constructor(private auth: AuthService) {}
+  constructor(private router: Router) {}
 
-  async ngOnInit(): Promise<void> {
-    await this.auth.handleCallback();
+  ngOnInit(): void {
+    this.router.navigate(['/login']);
   }
 }
