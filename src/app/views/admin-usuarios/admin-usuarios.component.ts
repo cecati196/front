@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService, UserDTO } from '../../services/users.service';
+import { UsersService, UserDTO, CreateUserResponse } from '../../services/users.service';
 
 @Component({
   selector:    'app-admin-usuarios',
@@ -8,17 +8,17 @@ import { UsersService, UserDTO } from '../../services/users.service';
   styleUrls:   ['./admin-usuarios.component.css'],
 })
 export class AdminUsuariosComponent implements OnInit {
-  users: UserDTO[] = [];
-  showForm  = false;
-  loading   = false;
-  errorMsg: string | null = null;
+  users:       UserDTO[] = [];
+  showForm     = false;
+  loading      = false;
+  errorMsg:    string | null = null;
+  newUserTemp: { username: string; tempPassword: string } | null = null;
 
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private usersService: UsersService) {
     this.form = this.fb.group({
       username:   ['', Validators.required],
-      password:   ['', [Validators.required, Validators.minLength(8)]],
       name:       ['', Validators.required],
       role:       ['', Validators.required],
       schoolId:   [''],
@@ -32,7 +32,7 @@ export class AdminUsuariosComponent implements OnInit {
 
   loadUsers(): void {
     this.usersService.getAll().subscribe({
-      next: (data) => (this.users = data),
+      next:  (data) => (this.users = data),
       error: () => (this.errorMsg = 'Error al cargar usuarios'),
     });
   }
@@ -50,11 +50,15 @@ export class AdminUsuariosComponent implements OnInit {
     this.loading  = true;
     this.errorMsg = null;
 
-    const { username, password, name, role, schoolId, schoolName } = this.form.value;
-    this.usersService.create({ username, password, name, role, schoolId: schoolId || undefined, schoolName })
+    const { username, name, role, schoolId, schoolName } = this.form.value as {
+      username: string; name: string; role: string; schoolId: string; schoolName: string;
+    };
+
+    this.usersService.create({ username, name, role, schoolId: schoolId || undefined, schoolName })
       .subscribe({
-        next: (user) => {
-          this.users.push(user);
+        next: (res: CreateUserResponse) => {
+          this.users.push(res);
+          this.newUserTemp = { username: res.username, tempPassword: res.tempPassword };
           this.form.reset();
           this.showForm = false;
           this.loading  = false;
@@ -68,10 +72,14 @@ export class AdminUsuariosComponent implements OnInit {
       });
   }
 
+  clearTempPassword(): void {
+    this.newUserTemp = null;
+  }
+
   onDelete(user: UserDTO): void {
     if (!confirm(`¿Eliminar al usuario "${user.username}"?`)) return;
     this.usersService.delete(user.id).subscribe({
-      next: () => (this.users = this.users.filter((u) => u.id !== user.id)),
+      next:  () => (this.users = this.users.filter((u) => u.id !== user.id)),
       error: () => alert('Error al eliminar usuario'),
     });
   }

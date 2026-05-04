@@ -4,22 +4,26 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 export interface UserDTO {
-  id:         number;
-  username:   string;
-  name:       string;
-  role:       string;
-  schoolId:   string | null;
-  schoolName: string;
-  createdAt:  string;
+  id:                 number;
+  username:           string;
+  name:               string;
+  role:               string;
+  schoolId:           string | null;
+  schoolName:         string;
+  mustChangePassword: boolean;
+  createdAt:          string;
 }
 
 export interface CreateUserDTO {
   username:   string;
-  password:   string;
   name:       string;
   role:       string;
   schoolId?:  string;
   schoolName: string;
+}
+
+export interface CreateUserResponse extends UserDTO {
+  tempPassword: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -32,8 +36,8 @@ export class UsersService {
     return this.http.get<UserDTO[]>(this.url);
   }
 
-  create(data: CreateUserDTO): Observable<UserDTO> {
-    return this.http.post<UserDTO>(this.url, data);
+  create(data: CreateUserDTO): Observable<CreateUserResponse> {
+    return this.http.post<CreateUserResponse>(this.url, data);
   }
 
   delete(id: number): Observable<void> {

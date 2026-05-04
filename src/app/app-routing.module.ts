@@ -8,6 +8,7 @@ import { NotFoundPagesComponent } from './views/not-found-pages/not-found-pages.
 import { ControlEscolarComponent } from './views/control-escolar/control-escolar.component';
 import { LoginComponent } from './views/login/login.component';
 import { AdminUsuariosComponent } from './views/admin-usuarios/admin-usuarios.component';
+import { ChangePasswordComponent } from './views/change-password/change-password.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'preguntas',       component: CardQuestionsComponent },
   { path: 'cursos',          component: ContainerCoursesComponent },
   { path: 'galeria',         component: GaleryComponent },
-  { path: 'login',           component: LoginComponent },
+  { path: 'login',             component: LoginComponent },
+  { path: 'cambiar-contrasena', component: ChangePasswordComponent },
   {
     path:        'control-escolar',
     component:   ControlEscolarComponent,

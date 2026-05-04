@@ -107,6 +107,55 @@
   padding: 24px;
 }
 
+.temp-password-panel {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.temp-password-panel strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.temp-password {
+  display: block;
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  background: #fff;
+  border: 1px dashed #ffb300;
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin: 8px 0;
+}
+
+.warning {
+  font-size: 0.8rem;
+  color: #e65100;
+  margin: 4px 0 12px;
+}
+
+.badge-pending {
+  background: #fff3e0;
+  color: #e65100;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid #ffb300;
+}
+
+.badge-active {
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid #a5d6a7;
+}
+
 @media (max-width: 600px) {
   .form-grid {
     grid-template-columns: 1fr;

@@ -14,13 +14,14 @@
 <section>
     <p>Bienvenido</p>
 
-    <div 
-        class="box-options" 
+    <div
+        class="box-options"
         *ngIf="!isNewCourse && !isEditCourse && !isDeleteCourse">
         <button (click)="btnShowSelected('Add')">Agregar Nuevo Curso</button>
         <button (click)="btnShowSelected('Edit')">Editar Curso</button>
         <button (click)="btnShowSelected('Delete')" class="button-deleted">Eliminar Curso</button>
-    </div>    
+        <button routerLink="/admin-usuarios">Administrar Usuarios</button>
+    </div>
 </section>
 
 <app-new-course-form 

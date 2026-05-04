@@ -21,6 +21,7 @@ import { ControlEscolarComponent } from './views/control-escolar/control-escolar
 import { LoginComponent } from './views/login/login.component';
 import { AuthCallbackComponent } from './views/auth-callback/auth-callback.component';
 import { AdminUsuariosComponent } from './views/admin-usuarios/admin-usuarios.component';
+import { ChangePasswordComponent } from './views/change-password/change-password.component';
 import { NewCourseFormComponent } from './views/new-course-form/new-course-form.component';
 import { EditCourseFormComponent } from './views/edit-course-form/edit-course-form.component';
 import { DeleteCourseComponent } from './views/delete-course/delete-course.component';
@@ -45,6 +46,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     LoginComponent,
     AuthCallbackComponent,
     AdminUsuariosComponent,
+    ChangePasswordComponent,
     NewCourseFormComponent,
     EditCourseFormComponent,
     DeleteCourseComponent,

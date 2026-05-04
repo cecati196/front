@@ -6,17 +6,21 @@
     </button>
   </div>
 
+  <!-- Panel de contraseña temporal (se muestra tras crear usuario) -->
+  <div *ngIf="newUserTemp" class="temp-password-panel">
+    <strong>Usuario creado exitosamente</strong>
+    <p>Entrega esta contraseña temporal al usuario <strong>{{ newUserTemp.username }}</strong>:</p>
+    <code class="temp-password">{{ newUserTemp.tempPassword }}</code>
+    <p class="warning">Esta contraseña no se volverá a mostrar. El usuario deberá cambiarla en su primer inicio de sesión.</p>
+    <button (click)="clearTempPassword()">Entendido</button>
+  </div>
+
   <!-- Formulario de nuevo usuario -->
   <form *ngIf="showForm" [formGroup]="form" (ngSubmit)="onSubmit()" class="user-form">
     <div class="form-grid">
       <div class="field">
         <label for="username">Usuario</label>
         <input id="username" type="text" formControlName="username" placeholder="nombre.usuario" />
-      </div>
-
-      <div class="field">
-        <label for="password">Contraseña</label>
-        <input id="password" type="password" formControlName="password" placeholder="Mínimo 8 caracteres" />
       </div>
 
       <div class="field">
@@ -64,6 +68,7 @@
         <th>Nombre</th>
         <th>Rol</th>
         <th>Escuela</th>
+        <th>Estado</th>
         <th></th>
       </tr>
     </thead>
@@ -74,11 +79,15 @@
         <td>{{ user.role }}</td>
         <td>{{ user.schoolName }}</td>
         <td>
+          <span *ngIf="user.mustChangePassword" class="badge-pending">Pendiente activar</span>
+          <span *ngIf="!user.mustChangePassword" class="badge-active">Activo</span>
+        </td>
+        <td>
           <button class="btn-delete" (click)="onDelete(user)">Eliminar</button>
         </td>
       </tr>
       <tr *ngIf="users.length === 0">
-        <td colspan="5" class="empty">No hay usuarios registrados</td>
+        <td colspan="6" class="empty">No hay usuarios registrados</td>
       </tr>
     </tbody>
   </table>
