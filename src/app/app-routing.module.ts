@@ -7,6 +7,7 @@ import { ContainerCoursesComponent } from './views/container-courses/container-c
 import { NotFoundPagesComponent } from './views/not-found-pages/not-found-pages.component';
 import { ControlEscolarComponent } from './views/control-escolar/control-escolar.component';
 import { LoginComponent } from './views/login/login.component';
+import { AdminUsuariosComponent } from './views/admin-usuarios/admin-usuarios.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path:        'control-escolar',
     component:   ControlEscolarComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path:        'admin-usuarios',
+    component:   AdminUsuariosComponent,
     canActivate: [AuthGuard],
   },
   { path: '',   redirectTo: '/inicio', pathMatch: 'full' },

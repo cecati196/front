@@ -20,6 +20,7 @@ import { NotFoundPagesComponent } from './views/not-found-pages/not-found-pages.
 import { ControlEscolarComponent } from './views/control-escolar/control-escolar.component';
 import { LoginComponent } from './views/login/login.component';
 import { AuthCallbackComponent } from './views/auth-callback/auth-callback.component';
+import { AdminUsuariosComponent } from './views/admin-usuarios/admin-usuarios.component';
 import { NewCourseFormComponent } from './views/new-course-form/new-course-form.component';
 import { EditCourseFormComponent } from './views/edit-course-form/edit-course-form.component';
 import { DeleteCourseComponent } from './views/delete-course/delete-course.component';
@@ -43,6 +44,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     ControlEscolarComponent,
     LoginComponent,
     AuthCallbackComponent,
+    AdminUsuariosComponent,
     NewCourseFormComponent,
     EditCourseFormComponent,
     DeleteCourseComponent,
