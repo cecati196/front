@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService, UserDTO, CreateUserResponse } from '../../services/users.service';
 
 @Component({
-  selector:    'app-admin-usuarios',
-  templateUrl: './admin-usuarios.component.html',
-  styleUrls:   ['./admin-usuarios.component.css'],
+  selector:    'app-user-management',
+  templateUrl: './user-management.component.html',
+  styleUrls:   ['./user-management.component.css'],
 })
-export class AdminUsuariosComponent implements OnInit {
+export class UserManagementComponent implements OnInit {
   users:       UserDTO[] = [];
   showForm     = false;
   loading      = false;

@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { AuthService, AuthUser } from '../../auth/auth.service';
 
 @Component({
-  selector: 'app-control-escolar',
-  templateUrl: './control-escolar.component.html',
-  styleUrls: ['./control-escolar.component.css']
+  selector:    'app-school-control',
+  templateUrl: './school-control.component.html',
+  styleUrls:   ['./school-control.component.css'],
 })
-export class ControlEscolarComponent {
+export class SchoolControlComponent {
   user: AuthUser | null = null;
 
   constructor(private auth: AuthService) {
@@ -16,11 +16,12 @@ export class ControlEscolarComponent {
   logout(): void {
     this.auth.logout();
   }
-  public isNewCourse = false; 
-  public isEditCourse = false; 
-  public isDeleteCourse = false; 
 
-  btnShowSelected(phrase:'Add' | 'Edit' |'Delete'){
+  public isNewCourse    = false;
+  public isEditCourse   = false;
+  public isDeleteCourse = false;
+
+  btnShowSelected(phrase: 'Add' | 'Edit' | 'Delete'): void {
     if (phrase === 'Add') {
       this.isNewCourse = true;
     } else if (phrase === 'Delete') {
@@ -30,8 +31,7 @@ export class ControlEscolarComponent {
     }
   }
 
-  closeNewCourseForm($event: boolean){
+  closeNewCourseForm($event: boolean): void {
     this.isNewCourse = $event;
   }
-
 }

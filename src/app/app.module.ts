@@ -17,10 +17,10 @@ import { ContainerSpecialitiesComponent } from './views/container-specialities/c
 import { SearchComponent } from './components/search/search.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { NotFoundPagesComponent } from './views/not-found-pages/not-found-pages.component';
-import { ControlEscolarComponent } from './views/control-escolar/control-escolar.component';
+import { SchoolControlComponent } from './views/school-control/school-control.component';
 import { LoginComponent } from './views/login/login.component';
 import { AuthCallbackComponent } from './views/auth-callback/auth-callback.component';
-import { AdminUsuariosComponent } from './views/admin-usuarios/admin-usuarios.component';
+import { UserManagementComponent } from './views/user-management/user-management.component';
 import { ChangePasswordComponent } from './views/change-password/change-password.component';
 import { NewCourseFormComponent } from './views/new-course-form/new-course-form.component';
 import { EditCourseFormComponent } from './views/edit-course-form/edit-course-form.component';
@@ -42,10 +42,10 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     SearchComponent,
     SpinnerComponent,
     NotFoundPagesComponent,
-    ControlEscolarComponent,
+    SchoolControlComponent,
     LoginComponent,
     AuthCallbackComponent,
-    AdminUsuariosComponent,
+    UserManagementComponent,
     ChangePasswordComponent,
     NewCourseFormComponent,
     EditCourseFormComponent,

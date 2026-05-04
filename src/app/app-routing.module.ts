@@ -5,9 +5,9 @@ import { CardQuestionsComponent } from './views/card-questions/card-questions.co
 import { GaleryComponent } from './views/galery/galery.component';
 import { ContainerCoursesComponent } from './views/container-courses/container-courses.component';
 import { NotFoundPagesComponent } from './views/not-found-pages/not-found-pages.component';
-import { ControlEscolarComponent } from './views/control-escolar/control-escolar.component';
+import { SchoolControlComponent } from './views/school-control/school-control.component';
 import { LoginComponent } from './views/login/login.component';
-import { AdminUsuariosComponent } from './views/admin-usuarios/admin-usuarios.component';
+import { UserManagementComponent } from './views/user-management/user-management.component';
 import { ChangePasswordComponent } from './views/change-password/change-password.component';
 import { AuthGuard } from './auth/auth.guard';
 
@@ -20,12 +20,12 @@ const routes: Routes = [
   { path: 'cambiar-contrasena', component: ChangePasswordComponent },
   {
     path:        'control-escolar',
-    component:   ControlEscolarComponent,
+    component:   SchoolControlComponent,
     canActivate: [AuthGuard],
   },
   {
     path:        'admin-usuarios',
-    component:   AdminUsuariosComponent,
+    component:   UserManagementComponent,
     canActivate: [AuthGuard],
   },
   { path: '',   redirectTo: '/inicio', pathMatch: 'full' },
