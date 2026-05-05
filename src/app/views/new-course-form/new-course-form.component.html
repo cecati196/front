@@ -53,23 +53,20 @@
         </label>
     
         <label for="daysOfClasses" class="days-of-classes">
-            <span class="required">Dias de Clase:</span>
-            <div>
-                <input type="checkbox" name="dia[]" value="Lunes" onclick="estado();"/><span>Lunes</span>
-                <input type="checkbox" name="dia[]" value="Martes" onclick="estado();"/><span>Martes</span>
-                <input type="checkbox" name="dia[]" value="Miercoles" onclick="estado();"/><span>Miércoles</span>
-                <input type="checkbox" name="dia[]" value="Jueves" onclick="estado();"/><span>Jueves</span>
-                <input type="checkbox" name="dia[]" value="Viernes" onclick="estado();"/><span>Viernes</span>
-                <input type="checkbox" name="dia[]" value="Sábado" onclick="estado();"/><span>Sábado</span>
-                <input type="checkbox" name="dia[]" value="Domingo" onclick="estado();"/><span>Domingo</span>
-                <input type="checkbox" name="dia[]" value="Lun-Vie" onclick="estado();"/><span>Lun-Vie</span>
+            <span class="required">Días de Clase:</span>
+            <div class="days-grid">
+                <label class="day-check shortcut">
+                    <input type="checkbox" [(ngModel)]="lunVie" [ngModelOptions]="{standalone:true}" (change)="onLunVieChange()"/>
+                    <span>Lun — Vie</span>
+                </label>
+                <label class="day-check" *ngFor="let day of ['Lunes','Martes','Miercoles','Jueves','Viernes','Sábado','Domingo']">
+                    <input type="checkbox" [(ngModel)]="days[day]" [ngModelOptions]="{standalone:true}" (change)="onDayChange()"/>
+                    <span>{{ day }}</span>
+                </label>
             </div>
-            <p>Aqui van los dias select</p>
-            <!-- <select name="daysOfClasses" formControlName="daysOfClasses">
-                <option *ngFor="let days of daysOfClass" [ngValue]="days">
-                    {{ days }}
-                </option>
-            </select> -->
+            <p class="days-preview" *ngIf="courseForm.get('daysOfClasses')?.value">
+                {{ courseForm.get('daysOfClasses')?.value }}
+            </p>
         </label>
     
         <label for="startTime">

@@ -89,12 +89,28 @@ export class NewCourseFormComponent {
     this.phareInput = '';
   }  
 
-  public daysOfClass = [
-    'Lunes a Viernes',
-    'Martes y Jueves',
-    'Lunes, Miercoles y Viernes',
-    'Sábados',
-  ]
+  days: { [key: string]: boolean } = {
+    Lunes: false, Martes: false, Miercoles: false,
+    Jueves: false, Viernes: false, Sábado: false, Domingo: false,
+  };
+  lunVie = false;
+
+  onDayChange(): void {
+    const selected = Object.entries(this.days)
+      .filter(([, v]) => v)
+      .map(([k]) => k);
+    // Si exactamente Lun-Vie están marcados, sincroniza el shortcut
+    const weekdays = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
+    this.lunVie = weekdays.every(d => this.days[d]) &&
+                  !this.days['Sábado'] && !this.days['Domingo'];
+    this.courseForm.get('daysOfClasses')?.setValue(selected.length ? selected.join(', ') : '');
+  }
+
+  onLunVieChange(): void {
+    const v = this.lunVie;
+    ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'].forEach(d => this.days[d] = v);
+    this.onDayChange();
+  }
 
   public typesModality = [
     'Presencial',
