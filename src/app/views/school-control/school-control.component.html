@@ -29,6 +29,9 @@
 >
 </app-new-course-form>
 
-<app-edit-course-form *ngIf="isEditCourse"></app-edit-course-form>
+<app-edit-course-form
+    *ngIf="isEditCourse"
+    (closeEditCourseForm)="closeEditCourseForm($event)">
+</app-edit-course-form>
 
 <app-delete-course *ngIf="isDeleteCourse"></app-delete-course>

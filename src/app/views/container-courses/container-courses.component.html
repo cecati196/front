@@ -19,8 +19,8 @@
             <p class="containerCourse--profesor">Tipo de Curso: {{ course.courseType }}</p>
             <p class="containerCourse--profesor">Profesor: {{course.professor }}</p>
             
-            <p>Inicia:  <b>{{ course.startDate }}</b></p>
-            <p>Termina:  <b>{{ course.endDate }}</b></p>
+            <p>Inicia:  <b>{{ course.startDate | date:'dd/MM/yyyy':'UTC' }}</b></p>
+            <p>Termina:  <b>{{ course.endDate | date:'dd/MM/yyyy':'UTC' }}</b></p>
             <p>{{ course.daysOfClasses }} de <b>{{ course.startTime }} a {{ course.endTime }}</b> hrs.</p>
             
             <p>Modalidad: <b><i>{{ course.courseModality }}</i></b></p>

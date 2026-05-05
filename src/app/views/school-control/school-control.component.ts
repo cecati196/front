@@ -28,7 +28,7 @@ export class SchoolControlComponent {
   btnShowSelected(phrase: 'Add' | 'Edit' | 'Delete'): void {
     if (phrase === 'Add') {
       this.isNewCourse = true;
-    } else if (phrase === 'Delete') {
+    } else if (phrase === 'Edit') {
       this.isEditCourse = true;
     } else {
       this.isDeleteCourse = true;
@@ -37,5 +37,9 @@ export class SchoolControlComponent {
 
   closeNewCourseForm($event: boolean): void {
     this.isNewCourse = $event;
+  }
+
+  closeEditCourseForm($event: boolean): void {
+    this.isEditCourse = $event;
   }
 }
