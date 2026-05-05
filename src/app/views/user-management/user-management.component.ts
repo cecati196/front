@@ -10,6 +10,7 @@ import { UsersService, UserDTO, CreateUserResponse } from '../../services/users.
 export class UserManagementComponent implements OnInit {
   users:       UserDTO[] = [];
   showForm     = false;
+  showTableUsers = true;
   loading      = false;
   errorMsg:    string | null = null;
   newUserTemp: { username: string; tempPassword: string } | null = null;
@@ -18,11 +19,9 @@ export class UserManagementComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private usersService: UsersService) {
     this.form = this.fb.group({
-      username:   ['', Validators.required],
-      name:       ['', Validators.required],
-      role:       ['', Validators.required],
-      schoolId:   [''],
-      schoolName: ['', Validators.required],
+      username: ['', Validators.required],
+      name:     ['', Validators.required],
+      role:     ['', Validators.required],
     });
   }
 
@@ -50,11 +49,11 @@ export class UserManagementComponent implements OnInit {
     this.loading  = true;
     this.errorMsg = null;
 
-    const { username, name, role, schoolId, schoolName } = this.form.value as {
-      username: string; name: string; role: string; schoolId: string; schoolName: string;
+    const { username, name, role } = this.form.value as {
+      username: string; name: string; role: string;
     };
 
-    this.usersService.create({ username, name, role, schoolId: schoolId || undefined, schoolName })
+    this.usersService.create({ username, name, role })
       .subscribe({
         next: (res: CreateUserResponse) => {
           this.users.push(res);

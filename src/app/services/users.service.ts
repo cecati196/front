@@ -8,18 +8,14 @@ export interface UserDTO {
   username:           string;
   name:               string;
   role:               string;
-  schoolId:           string | null;
-  schoolName:         string;
   mustChangePassword: boolean;
   createdAt:          string;
 }
 
 export interface CreateUserDTO {
-  username:   string;
-  name:       string;
-  role:       string;
-  schoolId?:  string;
-  schoolName: string;
+  username: string;
+  name:     string;
+  role:     string;
 }
 
 export interface CreateUserResponse extends UserDTO {

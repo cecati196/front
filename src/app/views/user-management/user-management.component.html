@@ -33,20 +33,9 @@
         <select id="role" formControlName="role">
           <option value="" disabled selected>Selecciona un rol</option>
           <option value="admin">Administrador</option>
-          <option value="director">Director</option>
-          <option value="docente">Docente</option>
-          <option value="apoyo_administrativo">Apoyo administrativo</option>
+          <option value="Directivo">Directivo</option>
+          <option value="Administrativo">Administrativo</option>
         </select>
-      </div>
-
-      <div class="field">
-        <label for="schoolId">ID de escuela</label>
-        <input id="schoolId" type="text" formControlName="schoolId" placeholder="Ej: 196 (opcional)" />
-      </div>
-
-      <div class="field">
-        <label for="schoolName">Nombre de escuela</label>
-        <input id="schoolName" type="text" formControlName="schoolName" placeholder="Ej: CECATI 196" />
       </div>
     </div>
 
@@ -61,13 +50,12 @@
   </form>
 
   <!-- Tabla de usuarios -->
-  <table class="users-table">
+  <table *ngIf="showTableUsers" class="users-table">
     <thead>
       <tr>
         <th>Usuario</th>
         <th>Nombre</th>
         <th>Rol</th>
-        <th>Escuela</th>
         <th>Estado</th>
         <th></th>
       </tr>
@@ -77,7 +65,6 @@
         <td>{{ user.username }}</td>
         <td>{{ user.name }}</td>
         <td>{{ user.role }}</td>
-        <td>{{ user.schoolName }}</td>
         <td>
           <span *ngIf="user.mustChangePassword" class="badge-pending">Pendiente activar</span>
           <span *ngIf="!user.mustChangePassword" class="badge-active">Activo</span>
@@ -87,7 +74,7 @@
         </td>
       </tr>
       <tr *ngIf="users.length === 0">
-        <td colspan="6" class="empty">No hay usuarios registrados</td>
+        <td colspan="5" class="empty">No hay usuarios registrados</td>
       </tr>
     </tbody>
   </table>

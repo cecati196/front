@@ -5,11 +5,9 @@ import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 export interface AuthUser {
-  username:   string;
-  name:       string;
-  role:       string;
-  schoolId:   string | null;
-  schoolName: string;
+  username: string;
+  name:     string;
+  role:     string;
 }
 
 interface LoginSuccess {
@@ -74,6 +72,11 @@ export class AuthService {
     } catch {
       return false;
     }
+  }
+
+  canManageUsers(): boolean {
+    const user = this.userSubject.getValue();
+    return user?.role === 'admin' || user?.role === 'Directivo';
   }
 
   getToken(): string | null {

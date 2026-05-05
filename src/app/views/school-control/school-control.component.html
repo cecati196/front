@@ -4,7 +4,6 @@
   Nombre: {{ user.name }}<br>
   Usuario: {{ user.username }}<br>
   Rol: {{ user.role }}<br>
-  Escuela: {{ user.schoolName || '(sin escuela)' }}<br>
   <button (click)="logout()" style="margin-top:8px">Cerrar sesión</button>
 </div>
 
@@ -20,7 +19,7 @@
         <button (click)="btnShowSelected('Add')">Agregar Nuevo Curso</button>
         <button (click)="btnShowSelected('Edit')">Editar Curso</button>
         <button (click)="btnShowSelected('Delete')" class="button-deleted">Eliminar Curso</button>
-        <button routerLink="/admin-usuarios">Administrar Usuarios</button>
+        <button *ngIf="canManageUsers()" routerLink="/admin-usuarios">Administrar Usuarios</button>
     </div>
 </section>
 

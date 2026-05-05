@@ -17,6 +17,10 @@ export class SchoolControlComponent {
     this.auth.logout();
   }
 
+  canManageUsers(): boolean {
+    return this.auth.canManageUsers();
+  }
+
   public isNewCourse    = false;
   public isEditCourse   = false;
   public isDeleteCourse = false;

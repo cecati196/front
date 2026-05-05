@@ -10,6 +10,7 @@ import { LoginComponent } from './views/login/login.component';
 import { UserManagementComponent } from './views/user-management/user-management.component';
 import { ChangePasswordComponent } from './views/change-password/change-password.component';
 import { AuthGuard } from './auth/auth.guard';
+import { RoleGuard } from './auth/role.guard';
 
 const routes: Routes = [
   { path: 'inicio',          component: HomeComponent },
@@ -26,7 +27,7 @@ const routes: Routes = [
   {
     path:        'admin-usuarios',
     component:   UserManagementComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
   },
   { path: '',   redirectTo: '/inicio', pathMatch: 'full' },
   { path: '**', component: NotFoundPagesComponent },
