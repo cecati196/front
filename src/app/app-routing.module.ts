@@ -9,6 +9,7 @@ import { SchoolControlComponent } from './views/school-control/school-control.co
 import { LoginComponent } from './views/login/login.component';
 import { UserManagementComponent } from './views/user-management/user-management.component';
 import { ChangePasswordComponent } from './views/change-password/change-password.component';
+import { UpdatePasswordComponent } from './views/update-password/update-password.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RoleGuard } from './auth/role.guard';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'galeria',         component: GaleryComponent },
   { path: 'login',             component: LoginComponent },
   { path: 'cambiar-contrasena', component: ChangePasswordComponent },
+  { path: 'actualizar-contrasena', component: UpdatePasswordComponent, canActivate: [AuthGuard] },
   {
     path:        'control-escolar',
     component:   SchoolControlComponent,

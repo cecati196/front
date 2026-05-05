@@ -64,6 +64,16 @@ export class AuthService {
     this.router.navigate(['/control-escolar']);
   }
 
+  async updatePassword(currentPassword: string, newPassword: string): Promise<void> {
+    await firstValueFrom(
+      this.http.post(
+        `${environment.authServiceUrl}/api/auth/update-password`,
+        { currentPassword, newPassword },
+      ),
+    );
+    this.router.navigate(['/control-escolar']);
+  }
+
   isAuthenticated(): boolean {
     if (!this.token) return false;
     try {
@@ -76,7 +86,7 @@ export class AuthService {
 
   canManageUsers(): boolean {
     const user = this.userSubject.getValue();
-    return user?.role === 'admin' || user?.role === 'Directivo';
+    return user?.role === 'Admin' || user?.role === 'Directivo';
   }
 
   getToken(): string | null {
