@@ -1,4 +1,5 @@
 export interface Course {
+    id?: number;
     courseName: string;
     specialty: string;
     thematicContent?: string;

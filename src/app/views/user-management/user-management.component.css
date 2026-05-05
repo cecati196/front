@@ -13,6 +13,20 @@
   margin: 0;
 }
 
+.btn-back {
+  background: transparent;
+  border: 1px solid var(--contrastColor, #ccc);
+  color: var(--fontColor2, #555);
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-back:hover {
+  background: var(--mainColor2, #f5f5f5);
+}
+
 .user-form {
   background: var(--mainColor2, #f5f5f5);
   border: 1px solid var(--contrastColor, #ccc);
