@@ -204,6 +204,11 @@ button:disabled {
     color: var(--mainColor);
 }
 
+.delete {
+    background-color: #c62828;
+    color: #fff;
+}
+
 @media (max-width: 620px) {
     form {
         grid-template-columns: 1fr;

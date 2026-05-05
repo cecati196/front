@@ -19,8 +19,9 @@ export class EditCourseFormComponent implements OnInit {
   selectedCourse:  Course | null = null;
   searchText = '';
 
-  loading   = false;
-  errorMsg: string | null = null;
+  loading       = false;
+  deleteLoading = false;
+  errorMsg:   string | null = null;
   successMsg: string | null = null;
 
   courseForm: FormGroup;
@@ -132,6 +133,28 @@ export class EditCourseFormComponent implements OnInit {
       error: () => {
         this.errorMsg = 'Error al actualizar el curso';
         this.loading  = false;
+      },
+    });
+  }
+
+  onDelete(): void {
+    if (!this.selectedCourse?.id) return;
+    if (!confirm(`¿Eliminar el curso "${this.selectedCourse.courseName}"? Esta acción no se puede deshacer.`)) return;
+
+    this.deleteLoading = true;
+    this.errorMsg      = null;
+
+    this.coursesService.deleteCourse(this.selectedCourse.id).subscribe({
+      next: () => {
+        this.allCourses = this.allCourses.filter(c => c.id !== this.selectedCourse!.id);
+        this.filterList();
+        this.deleteLoading = false;
+        this.successMsg    = 'Curso eliminado correctamente';
+        setTimeout(() => this.closeEditCourseForm.emit(false), 1500);
+      },
+      error: () => {
+        this.errorMsg     = 'Error al eliminar el curso';
+        this.deleteLoading = false;
       },
     });
   }

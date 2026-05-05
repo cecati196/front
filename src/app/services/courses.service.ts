@@ -49,6 +49,10 @@ export class CoursesService {
     );
   }
 
+  deleteCourse(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${id}`);
+  }
+
   private mapCourse(raw: ApiCourse): Course {
     return {
       id:              raw.id,

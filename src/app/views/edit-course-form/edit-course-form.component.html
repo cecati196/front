@@ -141,9 +141,17 @@
   <div class="container-buttons">
     <button class="cancel" type="button" (click)="backToList()">&#8592; CAMBIAR CURSO</button>
     <button
+      class="delete"
+      type="button"
+      (click)="onDelete()"
+      [disabled]="deleteLoading || loading"
+    >
+      {{ deleteLoading ? 'Eliminando...' : 'Eliminar curso' }}
+    </button>
+    <button
       type="submit"
       form="editCourse"
-      [disabled]="loading || courseForm.invalid"
+      [disabled]="loading || deleteLoading || courseForm.invalid"
     >
       {{ loading ? 'Guardando...' : 'Guardar cambios' }}
     </button>

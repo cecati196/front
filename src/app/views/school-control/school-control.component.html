@@ -16,10 +16,9 @@
 
     <div
         class="box-options"
-        *ngIf="!isNewCourse && !isEditCourse && !isDeleteCourse">
+        *ngIf="!isNewCourse && !isEditCourse">
         <button (click)="btnShowSelected('Add')">Agregar Nuevo Curso</button>
-        <button (click)="btnShowSelected('Edit')">Editar Curso</button>
-        <button (click)="btnShowSelected('Delete')" class="button-deleted">Eliminar Curso</button>
+        <button (click)="btnShowSelected('Edit')">Editar / Eliminar Curso</button>
         <button *ngIf="canManageUsers()" routerLink="/admin-usuarios">Administrar Usuarios</button>
     </div>
 </section>
@@ -35,4 +34,3 @@
     (closeEditCourseForm)="closeEditCourseForm($event)">
 </app-edit-course-form>
 
-<app-delete-course *ngIf="isDeleteCourse"></app-delete-course>

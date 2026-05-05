@@ -21,17 +21,14 @@ export class SchoolControlComponent {
     return this.auth.canManageUsers();
   }
 
-  public isNewCourse    = false;
-  public isEditCourse   = false;
-  public isDeleteCourse = false;
+  public isNewCourse  = false;
+  public isEditCourse = false;
 
-  btnShowSelected(phrase: 'Add' | 'Edit' | 'Delete'): void {
+  btnShowSelected(phrase: 'Add' | 'Edit'): void {
     if (phrase === 'Add') {
       this.isNewCourse = true;
-    } else if (phrase === 'Edit') {
-      this.isEditCourse = true;
     } else {
-      this.isDeleteCourse = true;
+      this.isEditCourse = true;
     }
   }
 
