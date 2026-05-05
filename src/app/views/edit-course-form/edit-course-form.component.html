@@ -59,10 +59,10 @@
 
     <label for="professor">
       <span class="required">Profesor</span>
-      <input list="professorList" formControlName="professor" />
-      <datalist id="professorList">
-        <option *ngFor="let p of listProfesor" [value]="p">{{ p }}</option>
-      </datalist>
+      <select formControlName="professor">
+        <option value="" disabled>-- Selecciona un profesor --</option>
+        <option *ngFor="let p of listProfessors" [ngValue]="p">{{ p }}</option>
+      </select>
     </label>
 
     <label for="startDate">

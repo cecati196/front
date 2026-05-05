@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CoursesService } from 'src/app/services/courses.service';
-import { PROFESOR, SPECIALTIES } from 'src/app/shared/SPECIALTIES';
+import { CatalogService } from 'src/app/services/catalog.service';
 import { Course } from 'src/app/shared/interfaces/course.interface';
 
 @Component({
@@ -27,39 +27,34 @@ export class EditCourseFormComponent implements OnInit {
   courseForm: FormGroup;
 
   listSpecialties: string[] = [];
-  listProfesor = PROFESOR;
+  listProfessors:  string[] = [];
 
-  daysOfClass = [
-    'Lunes a Viernes',
-    'Lunes, Miercoles y Viernes',
-    'Martes y Jueves',
-    'Sábados',
-  ];
+  daysOfClass   = ['Lunes a Viernes', 'Lunes, Miercoles y Viernes', 'Martes y Jueves', 'Sábados'];
   typesModality = ['Presencial', 'Remoto', 'Híbrido'];
   typeCourse    = ['Regular', 'Extensión'];
 
-  constructor(private fb: FormBuilder, private coursesService: CoursesService) {
-    for (const value of Object.values(SPECIALTIES)) {
-      this.listSpecialties.push(value);
-    }
-
+  constructor(
+    private fb:             FormBuilder,
+    private coursesService: CoursesService,
+    private catalogService: CatalogService,
+  ) {
     this.courseForm = this.fb.group({
-      courseName:     ['', Validators.required],
-      specialty:      ['', Validators.required],
+      courseName:      ['', Validators.required],
+      specialty:       ['', Validators.required],
       thematicContent: [''],
-      objective:      [''],
-      startTime:      ['', Validators.required],
-      endTime:        ['', Validators.required],
-      startDate:      ['', Validators.required],
-      endDate:        ['', Validators.required],
-      daysOfClasses:  ['', Validators.required],
-      cost:           ['', Validators.required],
-      professor:      ['', Validators.required],
-      hours:          ['', Validators.required],
-      courseType:     ['', Validators.required],
-      courseModality: ['Presencial', Validators.required],
-      searchPhrase:   [''],
-      observations:   [''],
+      objective:       [''],
+      startTime:       ['', Validators.required],
+      endTime:         ['', Validators.required],
+      startDate:       ['', Validators.required],
+      endDate:         ['', Validators.required],
+      daysOfClasses:   ['', Validators.required],
+      cost:            ['', Validators.required],
+      professor:       ['', Validators.required],
+      hours:           ['', Validators.required],
+      courseType:      ['', Validators.required],
+      courseModality:  ['Presencial', Validators.required],
+      searchPhrase:    [''],
+      observations:    [''],
     });
   }
 
@@ -70,6 +65,13 @@ export class EditCourseFormComponent implements OnInit {
         this.filteredCourses = courses;
       },
       error: () => (this.errorMsg = 'Error al cargar los cursos'),
+    });
+
+    this.catalogService.getSpecialties().subscribe({
+      next: items => this.listSpecialties = items.map(s => s.name),
+    });
+    this.catalogService.getProfessors().subscribe({
+      next: items => this.listProfessors = items.map(p => p.name),
     });
   }
 
@@ -86,31 +88,31 @@ export class EditCourseFormComponent implements OnInit {
     this.errorMsg   = null;
     this.successMsg = null;
     this.courseForm.patchValue({
-      courseName:     course.courseName,
-      specialty:      course.specialty,
+      courseName:      course.courseName,
+      specialty:       course.specialty,
       thematicContent: course.thematicContent ?? '',
-      objective:      course.objective        ?? '',
-      startTime:      course.startTime,
-      endTime:        course.endTime,
-      startDate:      course.startDate,
-      endDate:        course.endDate,
-      daysOfClasses:  course.daysOfClasses,
-      cost:           course.cost,
-      professor:      course.professor,
-      hours:          course.hours,
-      courseType:     course.courseType,
-      courseModality: course.courseModality,
-      searchPhrase:   course.searchPhrase ?? '',
-      observations:   course.observations  ?? '',
+      objective:       course.objective       ?? '',
+      startTime:       course.startTime,
+      endTime:         course.endTime,
+      startDate:       course.startDate,
+      endDate:         course.endDate,
+      daysOfClasses:   course.daysOfClasses,
+      cost:            course.cost,
+      professor:       course.professor,
+      hours:           course.hours,
+      courseType:      course.courseType,
+      courseModality:  course.courseModality,
+      searchPhrase:    course.searchPhrase ?? '',
+      observations:    course.observations  ?? '',
     });
     this.step = 'edit';
   }
 
   backToList(): void {
-    this.step         = 'select';
+    this.step           = 'select';
     this.selectedCourse = null;
-    this.errorMsg     = null;
-    this.successMsg   = null;
+    this.errorMsg       = null;
+    this.successMsg     = null;
     this.courseForm.reset({ courseModality: 'Presencial' });
   }
 
@@ -153,7 +155,7 @@ export class EditCourseFormComponent implements OnInit {
         setTimeout(() => this.closeEditCourseForm.emit(false), 1500);
       },
       error: () => {
-        this.errorMsg     = 'Error al eliminar el curso';
+        this.errorMsg      = 'Error al eliminar el curso';
         this.deleteLoading = false;
       },
     });
