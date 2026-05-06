@@ -61,18 +61,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.username }}</td>
-        <td>{{ user.name }}</td>
-        <td>{{ user.role }}</td>
-        <td>
-          <span *ngIf="user.mustChangePassword" class="badge-pending">Pendiente activar</span>
-          <span *ngIf="!user.mustChangePassword" class="badge-active">Activo</span>
-        </td>
-        <td>
-          <button class="btn-delete" (click)="onDelete(user)">Eliminar</button>
-        </td>
-      </tr>
+      <ng-container *ngFor="let user of users">
+        <tr *ngIf="user.role !== 'Admin'">
+          <td>{{ user.username }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <span *ngIf="user.mustChangePassword" class="badge-pending">Pendiente activar</span>
+            <span *ngIf="!user.mustChangePassword" class="badge-active">Activo</span>
+          </td>
+          <td>
+            <button class="btn-delete" (click)="onDelete(user)">Eliminar</button>
+          </td>
+        </tr>
+      </ng-container>
       <tr *ngIf="users.length === 0">
         <td colspan="5" class="empty">No hay usuarios registrados</td>
       </tr>
