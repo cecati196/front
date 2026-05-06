@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService, UserDTO, CreateUserResponse } from '../../services/users.service';
 import { DialogService } from '../../shared/dialog/dialog.service';
+import { AuthService, AuthUser } from '../../auth/auth.service';
 
 @Component({
   selector:    'app-user-management',
@@ -9,6 +10,7 @@ import { DialogService } from '../../shared/dialog/dialog.service';
   styleUrls:   ['./user-management.component.css'],
 })
 export class UserManagementComponent implements OnInit {
+  user:        AuthUser | null = null;
   users:       UserDTO[] = [];
   showForm     = false;
   showTableUsers = true;
@@ -18,7 +20,12 @@ export class UserManagementComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private usersService: UsersService, private dialog: DialogService) {
+  constructor(
+    private fb:           FormBuilder,
+    private usersService: UsersService,
+    private dialog:       DialogService,
+    private auth:         AuthService,
+  ) {
     this.form = this.fb.group({
       username: ['', Validators.required],
       name:     ['', Validators.required],
@@ -27,7 +34,12 @@ export class UserManagementComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.auth.user$.subscribe(u => this.user = u);
     this.loadUsers();
+  }
+
+  logout(): void {
+    this.auth.logout();
   }
 
   loadUsers(): void {
