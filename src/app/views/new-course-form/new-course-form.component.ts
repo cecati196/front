@@ -88,13 +88,22 @@ export class NewCourseFormComponent implements OnInit {
   lunVie = false;
 
   onDayChange(): void {
-    const selected = Object.entries(this.days)
-      .filter(([, v]) => v)
-      .map(([k]) => k);
     const weekdays = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
     this.lunVie = weekdays.every(d => this.days[d]) &&
                   !this.days['Sábado'] && !this.days['Domingo'];
-    this.courseForm.get('daysOfClasses')?.setValue(selected.length ? selected.join(', ') : '');
+    this.courseForm.get('daysOfClasses')?.setValue(this.formatDays());
+  }
+
+  private formatDays(): string {
+    const ORDER = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+    const selected = ORDER.filter(d => this.days[d]);
+    if (!selected.length) return '';
+    if (selected.length === 1) return selected[0];
+    const indices = selected.map(d => ORDER.indexOf(d));
+    const isConsecutive = indices.every((idx, i) => i === 0 || idx === indices[i - 1] + 1);
+    if (isConsecutive) return `${selected[0]} a ${selected[selected.length - 1]}`;
+    if (selected.length === 2) return `${selected[0]} y ${selected[1]}`;
+    return `${selected.slice(0, -1).join(', ')} y ${selected[selected.length - 1]}`;
   }
 
   onLunVieChange(): void {
