@@ -138,6 +138,40 @@ select option {
     margin: 0;
 }
 
+.phrase-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.phrase-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--contrastColor);
+    color: var(--mainColor);
+    font-size: 1.2rem;
+    padding: 4px 10px;
+    border-radius: 2em;
+}
+
+.chip-remove {
+    background: none;
+    border: none;
+    color: var(--mainColor);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    opacity: 0.8;
+}
+
+.chip-remove:hover {
+    opacity: 1;
+}
+
 input::-webkit-file-upload-button {
     border: 2px solid var(--contrastColor);
     background: linear-gradient(0deg, var(--contrastColor), var(--contrastColor2));

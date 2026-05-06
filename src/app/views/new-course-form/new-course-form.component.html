@@ -109,12 +109,23 @@
         </label>
 
         <label for="searchPhrase" class="full-width">
-            <span>Palabra o Frase de Busqueda:</span>
+            <span>Palabras clave de búsqueda:</span>
             <div class="search-phrase-row">
-                <input type="text" name="searchPhrase" #inputPhrase [value]="phareInput">
-                <button type="button" (click)="newPhrase(inputPhrase.value)">Añadir palabra</button>
+                <input
+                    type="text"
+                    placeholder="Escribe una palabra y pulsa Añadir o Enter"
+                    [(ngModel)]="phraseInput"
+                    [ngModelOptions]="{standalone:true}"
+                    (keyup.enter)="addPhrase()"
+                />
+                <button type="button" (click)="addPhrase()" [disabled]="!phraseInput.trim()">Añadir</button>
             </div>
-            <p >{{ phrases.toString() }}</p>
+            <div class="phrase-chips" *ngIf="phrases.length">
+                <span class="phrase-chip" *ngFor="let p of phrases; let i = index">
+                    {{ p }}
+                    <button type="button" class="chip-remove" (click)="removePhrase(i)" title="Eliminar">×</button>
+                </span>
+            </div>
         </label>
         
         <p class="legend-required">* Campos Obligatorios</p>

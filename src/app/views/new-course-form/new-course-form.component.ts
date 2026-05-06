@@ -19,7 +19,7 @@ export class NewCourseFormComponent implements OnInit {
   public phrases: string[] = [];
   public listSpecialties: string[] = [];
   public listProfessors:  string[] = [];
-  public phareInput: string = '';
+  public phraseInput = '';
 
   constructor(
     private formBuilder:    FormBuilder,
@@ -72,6 +72,8 @@ export class NewCourseFormComponent implements OnInit {
       this.coursesService.newCourse(this.course).subscribe({
         next: () => {
           this.dialog.openAlert('Curso registrado correctamente').then(() => {
+            this.phrases = [];
+            this.phraseInput = '';
             this.closeNewCourseForm.emit(false);
           });
         },
@@ -82,9 +84,21 @@ export class NewCourseFormComponent implements OnInit {
     }
   }
 
-  newPhrase(eventPhrase: string): void {
-    this.phrases.push(eventPhrase);
-    this.phareInput = '';
+  addPhrase(): void {
+    const phrase = this.phraseInput.trim();
+    if (!phrase || this.phrases.includes(phrase)) return;
+    this.phrases.push(phrase);
+    this.phraseInput = '';
+    this.syncPhrases();
+  }
+
+  removePhrase(index: number): void {
+    this.phrases.splice(index, 1);
+    this.syncPhrases();
+  }
+
+  private syncPhrases(): void {
+    this.courseForm.get('searchPhrase')?.setValue(this.phrases.join(', '));
   }
 
   days: { [key: string]: boolean } = {
