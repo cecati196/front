@@ -25,6 +25,7 @@ import { ChangePasswordComponent } from './views/change-password/change-password
 import { NewCourseFormComponent } from './views/new-course-form/new-course-form.component';
 import { EditCourseFormComponent } from './views/edit-course-form/edit-course-form.component';
 import { DeleteCourseComponent } from './views/delete-course/delete-course.component';
+import { CatalogManagerComponent } from './views/catalog-manager/catalog-manager.component';
 import { UpdatePasswordComponent } from './views/update-password/update-password.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 
@@ -52,6 +53,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     EditCourseFormComponent,
     DeleteCourseComponent,
     UpdatePasswordComponent,
+    CatalogManagerComponent,
   ],
   imports: [
     BrowserModule,

@@ -21,8 +21,9 @@ export class SchoolControlComponent {
     return this.auth.canManageUsers();
   }
 
-  public isNewCourse  = false;
-  public isEditCourse = false;
+  public isNewCourse      = false;
+  public isEditCourse     = false;
+  public isCatalogManager = false;
 
   btnShowSelected(phrase: 'Add' | 'Edit'): void {
     if (phrase === 'Add') {
@@ -38,5 +39,13 @@ export class SchoolControlComponent {
 
   closeEditCourseForm($event: boolean): void {
     this.isEditCourse = $event;
+  }
+
+  openCatalogManager(): void {
+    this.isCatalogManager = true;
+  }
+
+  onCloseCatalogManager(): void {
+    this.isCatalogManager = false;
   }
 }

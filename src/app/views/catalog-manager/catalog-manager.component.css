@@ -1,0 +1,123 @@
+.catalog-manager {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.catalog-manager__title {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.catalog-panels {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.catalog-panel {
+  flex: 1 1 320px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fafafa;
+}
+
+.catalog-panel h4 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+.catalog-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.catalog-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 4px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+.catalog-list__item:last-child {
+  border-bottom: none;
+}
+
+.catalog-list__empty {
+  color: #999;
+  font-size: 0.85rem;
+  padding: 8px 4px;
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+  color: #e53935;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.btn-remove:hover {
+  color: #b71c1c;
+}
+
+.catalog-add {
+  display: flex;
+  gap: 8px;
+}
+
+.catalog-add input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.catalog-add button {
+  padding: 6px 12px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.catalog-add button:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+
+.catalog-manager__footer {
+  margin-top: 24px;
+}
+
+.btn-close {
+  padding: 8px 16px;
+  background: #616161;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  background: #424242;
+}
+
+.error-msg {
+  color: #e53935;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
