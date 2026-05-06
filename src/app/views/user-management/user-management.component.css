@@ -265,5 +265,54 @@ button:disabled {
   .admin-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* ── Tabla responsive: cada fila se convierte en tarjeta ── */
+  .users-table,
+  .users-table tbody,
+  .users-table tr {
+    display: block;
+  }
+
+  .users-table thead {
+    display: none;
+  }
+
+  .users-table tr {
+    border: 1px solid var(--contrastColor);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 4px 12px;
+  }
+
+  .users-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--contrastColor);
+    padding: 10px 0;
+    font-size: 1.3rem;
+  }
+
+  .users-table td:last-child {
+    border-bottom: none;
+  }
+
+  .users-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--fontColor2);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+
+  .td-actions {
+    justify-content: flex-end;
+  }
+
+  .td-actions::before {
+    content: '' !important;
   }
 }

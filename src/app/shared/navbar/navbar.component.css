@@ -101,6 +101,17 @@ body {
     color: var(--fontColor);
     text-decoration: none;
   }
+
+  .link-restricted {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .link-restricted svg {
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
   
   /* Estilos para pantallas grandes */
   @media screen and (min-width: 768px) {

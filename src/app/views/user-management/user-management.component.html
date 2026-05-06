@@ -86,14 +86,14 @@
     <tbody>
       <ng-container *ngFor="let user of users">
         <tr *ngIf="user.role !== 'Admin'">
-          <td>{{ user.username }}</td>
-          <td>{{ user.name }}</td>
-          <td>{{ user.role }}</td>
-          <td>
+          <td data-label="Usuario">{{ user.username }}</td>
+          <td data-label="Nombre">{{ user.name }}</td>
+          <td data-label="Rol">{{ user.role }}</td>
+          <td data-label="Estado">
             <span *ngIf="user.mustChangePassword" class="badge-pending">Pendiente activar</span>
             <span *ngIf="!user.mustChangePassword" class="badge-active">Activo</span>
           </td>
-          <td>
+          <td class="td-actions">
             <button class="btn-delete" (click)="onDelete(user)">Eliminar</button>
           </td>
         </tr>
