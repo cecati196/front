@@ -14,10 +14,15 @@
     padding: 10px 12px;
     border: 2px solid var(--contrastColor);
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.4rem;
     background: var(--mainColor);
     color: var(--fontColor);
     box-sizing: border-box;
+}
+
+.search-bar input::placeholder {
+    color: var(--fontColor2);
+    opacity: 0.7;
 }
 
 /* ── Lista de cursos ── */
@@ -28,7 +33,7 @@
     max-width: 680px;
     max-height: 400px;
     overflow-y: auto;
-    border: 1px solid var(--contrastColor);
+    border: 2px solid var(--contrastColor);
     border-radius: 6px;
 }
 
@@ -40,7 +45,7 @@
     cursor: pointer;
     border-bottom: 1px solid var(--contrastColor);
     transition: background 0.15s;
-    font-size: 1rem;
+    font-size: 1.4rem;
     gap: 12px;
 }
 
@@ -49,24 +54,25 @@
 }
 
 .course-item:hover {
-    background: var(--mainColor2, #f0f0f0);
+    background: var(--mainColor2);
 }
 
 .course-item__name {
     font-weight: 600;
     text-align: left;
     flex: 1;
+    color: var(--fontColor);
 }
 
 .course-item__specialty {
-    font-size: 0.85rem;
-    color: var(--fontColor2, #666);
+    font-size: 1.2rem;
+    color: var(--fontColor2);
     text-align: right;
 }
 
 .course-item--empty {
     cursor: default;
-    color: #aaa;
+    color: var(--fontColor2);
     justify-content: center;
 }
 
@@ -108,6 +114,7 @@ input, select {
     border: 2px solid var(--contrastColor);
     color: var(--fontColor);
     background: var(--mainColor);
+    font-size: 1.4rem;
     box-sizing: border-box;
 }
 
@@ -121,6 +128,7 @@ textarea {
     min-height: 90px;
     border: 2px solid var(--contrastColor);
     color: var(--fontColor);
+    font-size: 1.4rem;
     resize: vertical;
     width: 100%;
     box-sizing: border-box;
@@ -154,7 +162,7 @@ textarea {
 .legend-required {
     grid-column: 1 / -1;
     color: var(--fontColor);
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 0;
     text-align: left;
     padding-left: 10px;
@@ -163,13 +171,13 @@ textarea {
 /* ── Mensajes ── */
 .error-msg {
     color: #e53935;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 8px auto;
 }
 
 .success-msg {
     color: #2e7d32;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 8px auto;
 }
 
@@ -187,11 +195,18 @@ textarea {
 button {
     align-self: center;
     background-color: var(--contrastColor);
+    border: none;
     border-radius: 2em;
     color: var(--mainColor);
     cursor: pointer;
+    font-size: 1.4rem;
     margin: 20px auto;
     padding: 12px 20px;
+    transition: opacity 0.15s;
+}
+
+button:hover:not(:disabled) {
+    opacity: 0.85;
 }
 
 button:disabled {

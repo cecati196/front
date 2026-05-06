@@ -1,3 +1,65 @@
+/* ── Encabezado de sesión ── */
+.session-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 20px;
+    margin-bottom: 16px;
+    border: 1px solid var(--contrastColor);
+    border-radius: 8px;
+    background: var(--mainColor2);
+}
+
+.session-header__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.session-header__name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--fontColor);
+}
+
+.session-header__role {
+    font-size: 1.2rem;
+    color: var(--contrastColor);
+}
+
+.session-header__actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.session-header__actions button {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 2em;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 0;
+    transition: opacity 0.15s;
+}
+
+.session-header__actions button:hover {
+    opacity: 0.85;
+}
+
+.btn-secondary {
+    background: var(--contrastColor);
+    color: var(--mainColor);
+}
+
+.btn-logout {
+    background: var(--fontColor2);
+    color: var(--mainColor);
+}
+
+/* ── Título y subtítulo ── */
 h3 {
     font-size: 1.8rem;
     color: var(--fontColor);
@@ -12,30 +74,42 @@ p {
     padding: 10px;
 }
 
+/* ── Sección principal ── */
 section {
     display: flex;
     flex-direction: column;
 }
 
+/* ── Botones de acción ── */
 .box-options {
-    text-align: center;
-    min-height: 40vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+    min-height: 30vh;
+    align-content: flex-start;
 }
 
 .box-options button {
     background-color: var(--contrastColor);
-    border-radius: 5px;
+    border: none;
+    border-radius: 2em;
     color: var(--mainColor);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
     cursor: pointer;
-    margin: 15px;
-    padding: 20px 10px;
+    padding: 20px 24px;
     width: 250px;
-    box-shadow: 0px 6px 18px 0px var(--contrastColor2);
+    box-shadow: 0 4px 14px 0 var(--contrastColor2);
+    transition: opacity 0.15s, transform 0.1s;
 }
 
-.box-options .button-deleted {
-    background-color: var(--fontColor);
-    box-shadow: 0px 6px 18px 0px var(--fontColor);
+.box-options button:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+}
+
+.box-options button:active {
+    transform: translateY(0);
 }

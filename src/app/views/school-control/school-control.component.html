@@ -1,18 +1,18 @@
-<!-- TODO: eliminar este banner cuando se confirme que el login funciona -->
-<div *ngIf="user" style="background:#e8f5e9;border:1px solid #a5d6a7;padding:12px 16px;margin-bottom:16px;border-radius:6px;font-family:monospace;font-size:13px">
-  <strong>Sesión activa</strong><br>
-  Nombre: {{ user.name }}<br>
-  Usuario: {{ user.username }}<br>
-  Rol: {{ user.role }}<br>
-  <button routerLink="/actualizar-contrasena" style="margin-top:8px;margin-right:8px">Cambiar contraseña</button>
-  <button (click)="logout()" style="margin-top:8px">Cerrar sesión</button>
+<div *ngIf="user" class="session-header">
+  <div class="session-header__info">
+    <span class="session-header__name">{{ user.name }}</span>
+    <span class="session-header__role">{{ user.role }}</span>
+  </div>
+  <div class="session-header__actions">
+    <button class="btn-secondary" routerLink="/actualizar-contrasena">Cambiar contraseña</button>
+    <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
+  </div>
 </div>
 
 <h3>Área de control escolar</h3>
 
-<!-- <app-login/> -->
 <section>
-    <p>Bienvenido</p>
+    <p>Selecciona una opción:</p>
 
     <div
         class="box-options"

@@ -5,10 +5,12 @@
 }
 
 .catalog-manager__title {
+  font-size: 1.8rem;
+  color: var(--fontColor);
   margin-bottom: 20px;
-  font-size: 1.2rem;
 }
 
+/* ── Paneles ── */
 .catalog-panels {
   display: flex;
   gap: 24px;
@@ -17,19 +19,21 @@
 
 .catalog-panel {
   flex: 1 1 320px;
-  border: 1px solid #ddd;
+  border: 2px solid var(--contrastColor);
   border-radius: 8px;
   padding: 16px;
-  background: #fafafa;
+  /* background: var(--mainColor2); */
 }
 
 .catalog-panel h4 {
   margin: 0 0 12px;
-  font-size: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  font-size: 1.6rem;
+  color: var(--fontColor);
+  border-bottom: 1px solid var(--contrastColor);
   padding-bottom: 8px;
 }
 
+/* ── Lista ── */
 .catalog-list {
   list-style: none;
   margin: 0 0 12px;
@@ -42,9 +46,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 4px;
-  border-bottom: 1px solid #eee;
-  font-size: 0.9rem;
+  padding: 7px 4px;
+  border-bottom: 1px solid var(--contrastColor);
+  font-size: 1.3rem;
+  color: var(--fontColor);
 }
 
 .catalog-list__item:last-child {
@@ -52,25 +57,28 @@
 }
 
 .catalog-list__empty {
-  color: #999;
-  font-size: 0.85rem;
+  color: var(--fontColor2);
+  font-size: 1.2rem;
   padding: 8px 4px;
 }
 
+/* ── Botón eliminar (×) ── */
 .btn-remove {
   background: none;
   border: none;
-  color: #e53935;
-  font-size: 1.1rem;
+  color: #c62828;
+  font-size: 1.4rem;
   cursor: pointer;
-  padding: 0 4px;
+  padding: 0 6px;
   line-height: 1;
+  transition: opacity 0.15s;
 }
 
 .btn-remove:hover {
-  color: #b71c1c;
+  opacity: 0.75;
 }
 
+/* ── Fila para agregar ── */
 .catalog-add {
   display: flex;
   gap: 8px;
@@ -78,46 +86,64 @@
 
 .catalog-add input {
   flex: 1;
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 0.9rem;
+  padding: 8px 10px;
+  border: 2px solid var(--contrastColor);
+  border-radius: 5px;
+  font-size: 1.3rem;
+  background: var(--mainColor);
+  color: var(--fontColor);
+  box-sizing: border-box;
+}
+
+.catalog-add input::placeholder {
+  color: var(--fontColor2);
+  opacity: 0.7;
 }
 
 .catalog-add button {
-  padding: 6px 12px;
-  background: #1976d2;
-  color: #fff;
+  background: var(--contrastColor);
+  color: var(--mainColor);
   border: none;
-  border-radius: 4px;
+  border-radius: 2em;
+  padding: 8px 16px;
+  font-size: 1.2rem;
   cursor: pointer;
   white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.catalog-add button:hover:not(:disabled) {
+  opacity: 0.85;
 }
 
 .catalog-add button:disabled {
-  background: #bdbdbd;
+  opacity: 0.45;
   cursor: not-allowed;
 }
 
+/* ── Pie ── */
 .catalog-manager__footer {
   margin-top: 24px;
 }
 
 .btn-close {
-  padding: 8px 16px;
-  background: #616161;
-  color: #fff;
+  background: var(--fontColor2);
+  color: var(--mainColor);
   border: none;
-  border-radius: 4px;
+  border-radius: 2em;
+  padding: 10px 24px;
+  font-size: 1.3rem;
   cursor: pointer;
+  transition: opacity 0.15s;
 }
 
 .btn-close:hover {
-  background: #424242;
+  opacity: 0.85;
 }
 
+/* ── Error ── */
 .error-msg {
   color: #e53935;
+  font-size: 1.2rem;
   margin-bottom: 12px;
-  font-size: 0.9rem;
 }

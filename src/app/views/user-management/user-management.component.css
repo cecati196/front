@@ -1,37 +1,117 @@
 .admin-container {
   padding: 16px;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
+/* ── Encabezado ── */
 .admin-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .admin-header h3 {
   margin: 0;
+  font-size: 1.8rem;
+  color: var(--fontColor);
+}
+
+/* ── Botones generales ── */
+button {
+  background: var(--contrastColor);
+  color: var(--mainColor);
+  border: none;
+  border-radius: 2em;
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .btn-back {
-  background: transparent;
-  border: 1px solid var(--contrastColor, #ccc);
-  color: var(--fontColor2, #555);
+  background: var(--fontColor2);
+  color: var(--mainColor);
+  font-size: 1.2rem;
+  padding: 8px 18px;
+}
+
+.btn-cancel {
+  background: var(--fontColor2);
+  color: var(--mainColor);
+}
+
+.btn-delete {
+  background: #c62828;
+  color: #fff;
   padding: 6px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 1.1rem;
 }
 
-.btn-back:hover {
-  background: var(--mainColor2, #f5f5f5);
+.btn-delete:hover {
+  opacity: 0.85;
+  background: #c62828;
 }
 
-.user-form {
-  background: var(--mainColor2, #f5f5f5);
-  border: 1px solid var(--contrastColor, #ccc);
+/* ── Panel de contraseña temporal ── */
+.temp-password-panel {
+  background: var(--mainColor2);
+  border: 2px solid var(--contrastColor);
   border-radius: 8px;
-  padding: 16px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.temp-password-panel strong {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--fontColor);
+  margin-bottom: 8px;
+}
+
+.temp-password-panel p {
+  font-size: 1.3rem;
+  color: var(--fontColor2);
+  margin-bottom: 6px;
+}
+
+.temp-password {
+  display: block;
+  font-size: 1.8rem;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  background: var(--mainColor);
+  border: 2px dashed var(--contrastColor);
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin: 8px 0;
+  color: var(--fontColor);
+  text-align: center;
+}
+
+.warning {
+  font-size: 1.2rem;
+  color: var(--fontColor2);
+  margin: 4px 0 12px;
+}
+
+/* ── Formulario de nuevo usuario ── */
+.user-form {
+  border: 2px solid var(--contrastColor);
+  border-radius: 8px;
+  padding: 16px 20px;
   margin-bottom: 20px;
 }
 
@@ -47,42 +127,40 @@
 }
 
 .field label {
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   margin-bottom: 4px;
-  color: var(--fontColor2, #555);
+  color: var(--fontColor2);
 }
 
 .field input,
 .field select {
-  padding: 8px;
-  border: 1px solid var(--contrastColor, #ccc);
-  border-radius: 4px;
-  background: var(--mainColor, #fff);
-  color: var(--fontColor2, #333);
+  padding: 9px 10px;
+  border: 2px solid var(--contrastColor);
+  border-radius: 5px;
+  background: var(--mainColor);
+  color: var(--fontColor);
+  font-size: 1.3rem;
+  box-sizing: border-box;
+}
+
+.field select option {
+  background: var(--mainColor);
 }
 
 .form-actions {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   justify-content: flex-end;
   margin-top: 16px;
 }
 
-.btn-cancel {
-  background: transparent;
-  border: 1px solid var(--contrastColor, #ccc);
-  color: var(--fontColor2, #555);
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
 .error-msg {
   color: #e53935;
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   margin: 8px 0 0;
 }
 
+/* ── Tabla de usuarios ── */
 .users-table {
   width: 100%;
   border-collapse: collapse;
@@ -92,86 +170,48 @@
 .users-table td {
   text-align: left;
   padding: 10px 12px;
-  border-bottom: 1px solid var(--contrastColor, #e0e0e0);
-  font-size: 0.9rem;
+  border-bottom: 1px solid var(--contrastColor);
+  font-size: 1.3rem;
+  color: var(--fontColor);
 }
 
 .users-table th {
-  font-weight: 600;
-  color: var(--fontColor2, #555);
-}
-
-.btn-delete {
-  background: #e53935;
-  color: #fff;
-  border: none;
-  padding: 5px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.8rem;
-}
-
-.btn-delete:hover {
-  background: #c62828;
+  font-weight: 700;
+  color: var(--fontColor2);
 }
 
 .empty {
   text-align: center;
-  color: #aaa;
+  color: var(--fontColor2);
   padding: 24px;
 }
 
-.temp-password-panel {
-  background: #fff8e1;
-  border: 1px solid #ffe082;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 20px;
-}
-
-.temp-password-panel strong {
-  display: block;
-  margin-bottom: 8px;
-}
-
-.temp-password {
-  display: block;
-  font-size: 1.4rem;
-  letter-spacing: 0.2em;
-  font-weight: bold;
-  background: #fff;
-  border: 1px dashed #ffb300;
-  border-radius: 4px;
-  padding: 10px 16px;
-  margin: 8px 0;
-}
-
-.warning {
-  font-size: 0.8rem;
-  color: #e65100;
-  margin: 4px 0 12px;
+/* ── Badges de estado ── */
+.badge-pending,
+.badge-active {
+  font-size: 1.1rem;
+  padding: 2px 10px;
+  border-radius: 2em;
+  border: 1px solid;
 }
 
 .badge-pending {
-  background: #fff3e0;
-  color: #e65100;
-  font-size: 0.75rem;
-  padding: 2px 8px;
-  border-radius: 12px;
-  border: 1px solid #ffb300;
+  color: var(--fontColor);
+  border-color: var(--fontColor);
 }
 
 .badge-active {
-  background: #e8f5e9;
-  color: #2e7d32;
-  font-size: 0.75rem;
-  padding: 2px 8px;
-  border-radius: 12px;
-  border: 1px solid #a5d6a7;
+  color: var(--contrastColor);
+  border-color: var(--contrastColor);
 }
 
 @media (max-width: 600px) {
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
