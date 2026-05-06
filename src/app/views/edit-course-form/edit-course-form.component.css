@@ -135,8 +135,50 @@ textarea {
     padding: 8px;
 }
 
-.full-width {
+.full-width,
+.days-of-classes {
     grid-column: 1 / -1;
+}
+
+.days-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding: 8px 0;
+    align-items: center;
+}
+
+.day-check {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+.day-check input[type='checkbox'] {
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.day-check.shortcut {
+    background: var(--contrastColor);
+    color: var(--mainColor);
+    border-color: var(--contrastColor);
+    font-weight: 600;
+}
+
+.days-preview {
+    font-size: 1.2rem;
+    color: var(--fontColor2);
+    margin: 4px 0 0;
+    padding: 0;
 }
 
 .cost-row {

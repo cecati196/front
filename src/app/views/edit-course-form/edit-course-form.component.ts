@@ -30,9 +30,14 @@ export class EditCourseFormComponent implements OnInit {
   listSpecialties: string[] = [];
   listProfessors:  string[] = [];
 
-  daysOfClass   = ['Lunes a Viernes', 'Lunes, Miercoles y Viernes', 'Martes y Jueves', 'Sábados'];
   typesModality = ['Presencial', 'Remoto', 'Híbrido'];
   typeCourse    = ['Regular', 'Extensión'];
+
+  days: { [key: string]: boolean } = {
+    Lunes: false, Martes: false, Miercoles: false,
+    Jueves: false, Viernes: false, Sábado: false, Domingo: false,
+  };
+  lunVie = false;
 
   constructor(
     private fb:             FormBuilder,
@@ -107,6 +112,7 @@ export class EditCourseFormComponent implements OnInit {
       searchPhrase:    course.searchPhrase ?? '',
       observations:    course.observations  ?? '',
     });
+    this.parseDays(course.daysOfClasses ?? '');
     this.step = 'edit';
   }
 
@@ -116,6 +122,58 @@ export class EditCourseFormComponent implements OnInit {
     this.errorMsg       = null;
     this.successMsg     = null;
     this.courseForm.reset({ courseModality: 'Presencial' });
+    this.parseDays('');
+  }
+
+  onDayChange(): void {
+    const weekdays = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
+    this.lunVie = weekdays.every(d => this.days[d]) &&
+                  !this.days['Sábado'] && !this.days['Domingo'];
+    this.courseForm.get('daysOfClasses')?.setValue(this.formatDays());
+  }
+
+  onLunVieChange(): void {
+    const v = this.lunVie;
+    ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'].forEach(d => this.days[d] = v);
+    this.onDayChange();
+  }
+
+  private formatDays(): string {
+    const ORDER = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+    const selected = ORDER.filter(d => this.days[d]);
+    if (!selected.length) return '';
+    if (selected.length === 1) return selected[0];
+    const indices = selected.map(d => ORDER.indexOf(d));
+    const isConsecutive = indices.every((idx, i) => i === 0 || idx === indices[i - 1] + 1);
+    if (isConsecutive) return `${selected[0]} a ${selected[selected.length - 1]}`;
+    if (selected.length === 2) return `${selected[0]} y ${selected[1]}`;
+    return `${selected.slice(0, -1).join(', ')} y ${selected[selected.length - 1]}`;
+  }
+
+  private parseDays(str: string): void {
+    const ORDER = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+    ORDER.forEach(d => this.days[d] = false);
+    this.lunVie = false;
+    if (!str?.trim()) return;
+
+    const normalized = str.trim().replace(/Sábados/g, 'Sábado');
+
+    if (normalized.includes(' a ')) {
+      const parts    = normalized.split(' a ');
+      const fromIdx  = ORDER.indexOf(parts[0].trim());
+      const toIdx    = ORDER.indexOf(parts[1].trim());
+      if (fromIdx !== -1 && toIdx !== -1) {
+        for (let i = fromIdx; i <= toIdx; i++) this.days[ORDER[i]] = true;
+      }
+    } else {
+      normalized.replace(/ y /g, ', ').split(', ')
+        .map(d => d.trim())
+        .filter(d => ORDER.includes(d))
+        .forEach(d => this.days[d] = true);
+    }
+
+    const weekdays = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
+    this.lunVie = weekdays.every(d => this.days[d]) && !this.days['Sábado'] && !this.days['Domingo'];
   }
 
   onSubmit(): void {

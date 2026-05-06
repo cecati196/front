@@ -82,11 +82,21 @@
       </select>
     </label>
 
-    <label for="daysOfClasses">
+    <label for="daysOfClasses" class="days-of-classes">
       <span class="required">Días de clase</span>
-      <select formControlName="daysOfClasses">
-        <option *ngFor="let d of daysOfClass" [ngValue]="d">{{ d }}</option>
-      </select>
+      <div class="days-grid">
+        <label class="day-check shortcut">
+          <input type="checkbox" [(ngModel)]="lunVie" [ngModelOptions]="{standalone:true}" (change)="onLunVieChange()"/>
+          <span>Lun — Vie</span>
+        </label>
+        <label class="day-check" *ngFor="let day of ['Lunes','Martes','Miercoles','Jueves','Viernes','Sábado','Domingo']">
+          <input type="checkbox" [(ngModel)]="days[day]" [ngModelOptions]="{standalone:true}" (change)="onDayChange()"/>
+          <span>{{ day }}</span>
+        </label>
+      </div>
+      <p class="days-preview" *ngIf="courseForm.get('daysOfClasses')?.value">
+        {{ courseForm.get('daysOfClasses')?.value }}
+      </p>
     </label>
 
     <label for="startTime">

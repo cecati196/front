@@ -69,8 +69,13 @@ export class NewCourseFormComponent implements OnInit {
   addNewCourse(): void {
     if (this.courseForm.status === 'VALID') {
       this.course = { ...this.courseForm.value };
-      this.coursesService.newCourse(this.course).subscribe((res: any) => {
-        this.dialog.openAlert(res.message);
+      this.coursesService.newCourse(this.course).subscribe({
+        next: () => {
+          this.dialog.openAlert('Curso registrado correctamente').then(() => {
+            this.closeNewCourseForm.emit(false);
+          });
+        },
+        error: () => this.dialog.openAlert('Error al registrar el curso. Intenta de nuevo.'),
       });
     } else {
       this.dialog.openAlert('Completa los campos obligatorios');
