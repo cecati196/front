@@ -7,7 +7,7 @@
 
     <!-- Especialidades -->
     <div class="catalog-panel">
-      <h4>Especialidades</h4>
+      <h4>Especialidades ({{ specialties.length }})</h4>
       <ul class="catalog-list">
         <li *ngFor="let s of specialties" class="catalog-list__item">
           <span>{{ s.name }}</span>
@@ -28,7 +28,7 @@
 
     <!-- Profesores -->
     <div class="catalog-panel">
-      <h4>Profesores</h4>
+      <h4>Profesores ({{ professors.length }})</h4>
       <ul class="catalog-list">
         <li *ngFor="let p of professors" class="catalog-list__item">
           <span>{{ p.name }}</span>
