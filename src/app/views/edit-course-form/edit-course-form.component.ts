@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CoursesService } from 'src/app/services/courses.service';
 import { CatalogService } from 'src/app/services/catalog.service';
+import { DialogService } from 'src/app/shared/dialog/dialog.service';
 import { Course } from 'src/app/shared/interfaces/course.interface';
 
 @Component({
@@ -37,6 +38,7 @@ export class EditCourseFormComponent implements OnInit {
     private fb:             FormBuilder,
     private coursesService: CoursesService,
     private catalogService: CatalogService,
+    private dialog:         DialogService,
   ) {
     this.courseForm = this.fb.group({
       courseName:      ['', Validators.required],
@@ -139,9 +141,13 @@ export class EditCourseFormComponent implements OnInit {
     });
   }
 
-  onDelete(): void {
+  async onDelete(): Promise<void> {
     if (!this.selectedCourse?.id) return;
-    if (!confirm(`¿Eliminar el curso "${this.selectedCourse.courseName}"? Esta acción no se puede deshacer.`)) return;
+    const confirmed = await this.dialog.openConfirm(
+      `¿Eliminar el curso "${this.selectedCourse.courseName}"? Esta acción no se puede deshacer.`,
+      { confirmLabel: 'Eliminar', isDangerous: true },
+    );
+    if (!confirmed) return;
 
     this.deleteLoading = true;
     this.errorMsg      = null;

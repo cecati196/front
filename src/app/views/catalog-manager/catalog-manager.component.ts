@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CatalogService } from 'src/app/services/catalog.service';
+import { DialogService } from 'src/app/shared/dialog/dialog.service';
 import { Specialty, Professor } from 'src/app/shared/interfaces/catalog.interface';
 
 @Component({
@@ -17,7 +18,7 @@ export class CatalogManagerComponent implements OnInit {
   newProfessor = '';
   errorMsg: string | null = null;
 
-  constructor(private catalog: CatalogService) {}
+  constructor(private catalog: CatalogService, private dialog: DialogService) {}
 
   ngOnInit(): void {
     this.catalog.getSpecialties().subscribe({ next: s => this.specialties = s });
@@ -37,8 +38,9 @@ export class CatalogManagerComponent implements OnInit {
     });
   }
 
-  removeSpecialty(id: number): void {
-    if (!confirm('¿Eliminar esta especialidad?')) return;
+  async removeSpecialty(id: number): Promise<void> {
+    const confirmed = await this.dialog.openConfirm('¿Eliminar esta especialidad?', { confirmLabel: 'Eliminar', isDangerous: true });
+    if (!confirmed) return;
     this.catalog.removeSpecialty(id).subscribe({
       next: () => this.specialties = this.specialties.filter(s => s.id !== id),
       error: () => this.errorMsg = 'Error al eliminar especialidad',
@@ -58,8 +60,9 @@ export class CatalogManagerComponent implements OnInit {
     });
   }
 
-  removeProfessor(id: number): void {
-    if (!confirm('¿Eliminar este profesor?')) return;
+  async removeProfessor(id: number): Promise<void> {
+    const confirmed = await this.dialog.openConfirm('¿Eliminar este profesor?', { confirmLabel: 'Eliminar', isDangerous: true });
+    if (!confirmed) return;
     this.catalog.removeProfessor(id).subscribe({
       next: () => this.professors = this.professors.filter(p => p.id !== id),
       error: () => this.errorMsg = 'Error al eliminar profesor',

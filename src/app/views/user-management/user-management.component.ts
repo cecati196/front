@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService, UserDTO, CreateUserResponse } from '../../services/users.service';
+import { DialogService } from '../../shared/dialog/dialog.service';
 
 @Component({
   selector:    'app-user-management',
@@ -17,7 +18,7 @@ export class UserManagementComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private usersService: UsersService) {
+  constructor(private fb: FormBuilder, private usersService: UsersService, private dialog: DialogService) {
     this.form = this.fb.group({
       username: ['', Validators.required],
       name:     ['', Validators.required],
@@ -75,11 +76,15 @@ export class UserManagementComponent implements OnInit {
     this.newUserTemp = null;
   }
 
-  onDelete(user: UserDTO): void {
-    if (!confirm(`¿Eliminar al usuario "${user.username}"?`)) return;
+  async onDelete(user: UserDTO): Promise<void> {
+    const confirmed = await this.dialog.openConfirm(
+      `¿Eliminar al usuario "${user.username}"?`,
+      { confirmLabel: 'Eliminar', isDangerous: true },
+    );
+    if (!confirmed) return;
     this.usersService.delete(user.id).subscribe({
       next:  () => (this.users = this.users.filter((u) => u.id !== user.id)),
-      error: () => alert('Error al eliminar usuario'),
+      error: () => this.dialog.openAlert('Error al eliminar usuario'),
     });
   }
 }

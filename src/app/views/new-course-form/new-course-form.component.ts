@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CoursesService } from 'src/app/services/courses.service';
 import { CatalogService } from 'src/app/services/catalog.service';
+import { DialogService } from 'src/app/shared/dialog/dialog.service';
 import { Course } from 'src/app/shared/interfaces/course.interface';
 
 @Component({
@@ -24,6 +25,7 @@ export class NewCourseFormComponent implements OnInit {
     private formBuilder:    FormBuilder,
     private coursesService: CoursesService,
     private catalogService: CatalogService,
+    private dialog:         DialogService,
   ) {
     this.courseForm = this.formBuilder.group({
       courseName:      ['', Validators.required],
@@ -68,11 +70,10 @@ export class NewCourseFormComponent implements OnInit {
     if (this.courseForm.status === 'VALID') {
       this.course = { ...this.courseForm.value };
       this.coursesService.newCourse(this.course).subscribe((res: any) => {
-        console.log(res);
-        alert(res.message);
+        this.dialog.openAlert(res.message);
       });
     } else {
-      alert('Completa los campos obligatorios');
+      this.dialog.openAlert('Completa los campos obligatorios');
     }
   }
 

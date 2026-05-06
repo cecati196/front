@@ -1,0 +1,24 @@
+<div *ngIf="state" class="dialog-overlay" (click)="onOverlayClick()">
+  <div class="dialog-modal" (click)="$event.stopPropagation()">
+    <p *ngIf="state.title" class="dialog-title">{{ state.title }}</p>
+    <p class="dialog-message">{{ state.message }}</p>
+    <div class="dialog-actions">
+      <button
+        *ngIf="state.type === 'confirm'"
+        class="btn-cancel"
+        type="button"
+        (click)="onCancel()"
+      >
+        Cancelar
+      </button>
+      <button
+        type="button"
+        [class.btn-danger]="state.isDangerous"
+        [class.btn-primary]="!state.isDangerous"
+        (click)="onConfirm()"
+      >
+        {{ state.confirmLabel }}
+      </button>
+    </div>
+  </div>
+</div>

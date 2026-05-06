@@ -27,6 +27,7 @@ import { EditCourseFormComponent } from './views/edit-course-form/edit-course-fo
 import { DeleteCourseComponent } from './views/delete-course/delete-course.component';
 import { CatalogManagerComponent } from './views/catalog-manager/catalog-manager.component';
 import { UpdatePasswordComponent } from './views/update-password/update-password.component';
+import { DialogComponent } from './shared/dialog/dialog.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
@@ -54,6 +55,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     DeleteCourseComponent,
     UpdatePasswordComponent,
     CatalogManagerComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
