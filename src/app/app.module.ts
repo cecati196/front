@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -28,6 +28,9 @@ import { DeleteCourseComponent } from './views/delete-course/delete-course.compo
 import { CatalogManagerComponent } from './views/catalog-manager/catalog-manager.component';
 import { UpdatePasswordComponent } from './views/update-password/update-password.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
+import { WakeUpIndicatorComponent } from './core/wake-up-indicator.component';
+import { WakeUpService } from './core/wake-up.service';
+import { RetryInterceptor } from './core/retry.interceptor';
 import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
@@ -56,6 +59,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     UpdatePasswordComponent,
     CatalogManagerComponent,
     DialogComponent,
+    WakeUpIndicatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +73,17 @@ import { AuthInterceptor } from './auth/auth.interceptor';
       provide:  HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi:    true,
+    },
+    {
+      provide:  HTTP_INTERCEPTORS,
+      useClass: RetryInterceptor,
+      multi:    true,
+    },
+    {
+      provide:    APP_INITIALIZER,
+      useFactory: (wake: WakeUpService) => () => wake.warmUp(),
+      deps:       [WakeUpService],
+      multi:      true,
     },
   ],
   bootstrap: [AppComponent],
