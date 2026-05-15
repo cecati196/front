@@ -96,7 +96,10 @@ export class UserManagementComponent implements OnInit {
     if (!confirmed) return;
     this.usersService.delete(user.id).subscribe({
       next:  () => (this.users = this.users.filter((u) => u.id !== user.id)),
-      error: () => this.dialog.openAlert('Error al eliminar usuario'),
+      error: (err) => {
+        const msg = err?.error?.error ?? 'Error al eliminar usuario';
+        this.dialog.openAlert(msg);
+      },
     });
   }
 }
