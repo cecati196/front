@@ -16,13 +16,12 @@ export class ContainerSpecialitiesComponent {
   ){}
 
   ngOnInit(): void {
-    this.coursesService.getCourses().subscribe( (res) => {
-      const { data } = res;
-      for (const course of data) {
-        this.courses.push(course);
-      }
-      this.createSpecialities(this.courses);
-    })
+    this.coursesService.getCourses().subscribe({
+      next: (courses) => {
+        this.courses = courses;
+        this.createSpecialities(this.courses);
+      },
+    });
   }
 
   private createSpecialities(courses: Course[]){

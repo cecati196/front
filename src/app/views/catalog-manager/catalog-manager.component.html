@@ -1,0 +1,55 @@
+<div class="catalog-manager">
+  <h3 class="catalog-manager__title">Editar Catálogos</h3>
+
+  <p *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</p>
+
+  <div class="catalog-panels">
+
+    <!-- Especialidades -->
+    <div class="catalog-panel">
+      <h4>Especialidades ({{ specialties.length }})</h4>
+      <ul class="catalog-list">
+        <li *ngFor="let s of specialties" class="catalog-list__item">
+          <span>{{ s.name }}</span>
+          <button class="btn-remove" type="button" (click)="removeSpecialty(s.id)" title="Eliminar">×</button>
+        </li>
+        <li *ngIf="specialties.length === 0" class="catalog-list__empty">Sin registros</li>
+      </ul>
+      <div class="catalog-add">
+        <input
+          type="text"
+          placeholder="Nueva especialidad..."
+          [(ngModel)]="newSpecialty"
+          (keyup.enter)="addSpecialty()"
+        />
+        <button type="button" (click)="addSpecialty()" [disabled]="!newSpecialty.trim()">+ Agregar</button>
+      </div>
+    </div>
+
+    <!-- Profesores -->
+    <div class="catalog-panel">
+      <h4>Profesores ({{ professors.length }})</h4>
+      <ul class="catalog-list">
+        <li *ngFor="let p of professors" class="catalog-list__item">
+          <span>{{ p.name }}</span>
+          <button class="btn-remove" type="button" (click)="removeProfessor(p.id)" title="Eliminar">×</button>
+        </li>
+        <li *ngIf="professors.length === 0" class="catalog-list__empty">Sin registros</li>
+      </ul>
+      <div class="catalog-add">
+        <input
+          type="text"
+          placeholder="Nuevo profesor..."
+          [(ngModel)]="newProfessor"
+          (keyup.enter)="addProfessor()"
+        />
+        <button type="button" (click)="addProfessor()" [disabled]="!newProfessor.trim()">+ Agregar</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="catalog-manager__footer">
+    <button class="btn-close" type="button" (click)="close()">← Regresar</button>
+  </div>
+</div>

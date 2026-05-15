@@ -23,15 +23,17 @@ export class ContainerCoursesComponent implements OnInit {
   public phraseSearch = '';
 
   ngOnInit(): void {
-    this.coursesService.getCourses().subscribe( (res) => {
-      const { data } = res;
-      for (const course of data) {
-        this.allCourses.push(course);
-      }
-      this.createSpecialities(this.allCourses);
-      this.loadAllCourses();
-      this.spinner = !this.spinner;
-    })
+    this.coursesService.getCourses().subscribe({
+      next: (courses) => {
+        this.allCourses = courses;
+        this.createSpecialities(this.allCourses);
+        this.loadAllCourses();
+        this.spinner = false;
+      },
+      error: () => {
+        this.spinner = false;
+      },
+    });
   }
 
   loadAllCourses(){

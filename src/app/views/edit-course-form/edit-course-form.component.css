@@ -1,0 +1,277 @@
+.container-edit-course-form {
+    text-align: center;
+}
+
+/* ── Barra de búsqueda ── */
+.search-bar {
+    max-width: 520px;
+    margin: 0 auto 16px;
+    padding: 0 16px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--contrastColor);
+    border-radius: 5px;
+    font-size: 1.4rem;
+    background: var(--mainColor);
+    color: var(--fontColor);
+    box-sizing: border-box;
+}
+
+.search-bar input::placeholder {
+    color: var(--fontColor2);
+    opacity: 0.7;
+}
+
+/* ── Lista de cursos ── */
+.course-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 24px;
+    max-width: 680px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 2px solid var(--contrastColor);
+    border-radius: 6px;
+}
+
+.course-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--contrastColor);
+    transition: background 0.15s;
+    font-size: 1.4rem;
+    gap: 12px;
+}
+
+.course-item:last-child {
+    border-bottom: none;
+}
+
+.course-item:hover {
+    background: var(--mainColor2);
+}
+
+.course-item__name {
+    font-weight: 600;
+    text-align: left;
+    flex: 1;
+    color: var(--fontColor);
+}
+
+.course-item__specialty {
+    font-size: 1.2rem;
+    color: var(--fontColor2);
+    text-align: right;
+}
+
+.course-item--empty {
+    cursor: default;
+    color: var(--fontColor2);
+    justify-content: center;
+}
+
+.course-item--empty:hover {
+    background: transparent;
+}
+
+/* ── Formulario ── */
+.message {
+    color: var(--contrastColor);
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 10px;
+}
+
+form {
+    font-size: 1.4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 20px;
+    color: var(--fontColor);
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+label {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 8px;
+    border-radius: 5px;
+    border: 2px solid var(--contrastColor);
+    color: var(--fontColor);
+    background: var(--mainColor);
+    font-size: 1.4rem;
+    box-sizing: border-box;
+}
+
+select option {
+    background-color: var(--mainColor);
+}
+
+textarea {
+    background: var(--mainColor);
+    border-radius: 5px;
+    min-height: 90px;
+    border: 2px solid var(--contrastColor);
+    color: var(--fontColor);
+    font-size: 1.4rem;
+    resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+.full-width,
+.days-of-classes {
+    grid-column: 1 / -1;
+}
+
+.days-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding: 8px 0;
+    align-items: center;
+}
+
+.day-check {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+.day-check input[type='checkbox'] {
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.day-check.shortcut {
+    background: var(--contrastColor);
+    color: var(--mainColor);
+    border-color: var(--contrastColor);
+    font-weight: 600;
+}
+
+.days-preview {
+    font-size: 1.2rem;
+    color: var(--fontColor2);
+    margin: 4px 0 0;
+    padding: 0;
+}
+
+.cost-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cost-row input {
+    flex: 1;
+}
+
+.form-cost::after {
+    content: "$";
+}
+
+.required::after {
+    content: "*";
+    color: #e53935;
+    margin-left: 2px;
+}
+
+.legend-required {
+    grid-column: 1 / -1;
+    color: var(--fontColor);
+    font-size: 1.2rem;
+    padding: 0;
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* ── Mensajes ── */
+.error-msg {
+    color: #e53935;
+    font-size: 1.2rem;
+    margin: 8px auto;
+}
+
+.success-msg {
+    color: #2e7d32;
+    font-size: 1.2rem;
+    margin: 8px auto;
+}
+
+/* ── Botones ── */
+.container-buttons {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+button {
+    align-self: center;
+    background-color: var(--contrastColor);
+    border: none;
+    border-radius: 2em;
+    color: var(--mainColor);
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin: 20px auto;
+    padding: 12px 20px;
+    transition: opacity 0.15s;
+}
+
+button:hover:not(:disabled) {
+    opacity: 0.85;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.cancel {
+    background-color: var(--fontColor2);
+    color: var(--mainColor);
+}
+
+.delete {
+    background-color: #c62828;
+    color: #fff;
+}
+
+@media (max-width: 620px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    .container-buttons {
+        flex-direction: column-reverse;
+    }
+}

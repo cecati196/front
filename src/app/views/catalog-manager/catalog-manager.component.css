@@ -1,0 +1,149 @@
+.catalog-manager {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.catalog-manager__title {
+  font-size: 1.8rem;
+  color: var(--fontColor);
+  margin-bottom: 20px;
+}
+
+/* ── Paneles ── */
+.catalog-panels {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.catalog-panel {
+  flex: 1 1 320px;
+  border: 2px solid var(--contrastColor);
+  border-radius: 8px;
+  padding: 16px;
+  /* background: var(--mainColor2); */
+}
+
+.catalog-panel h4 {
+  margin: 0 0 12px;
+  font-size: 1.6rem;
+  color: var(--fontColor);
+  border-bottom: 1px solid var(--contrastColor);
+  padding-bottom: 8px;
+}
+
+/* ── Lista ── */
+.catalog-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.catalog-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 4px;
+  border-bottom: 1px solid var(--contrastColor);
+  font-size: 1.3rem;
+  color: var(--fontColor);
+}
+
+.catalog-list__item:last-child {
+  border-bottom: none;
+}
+
+.catalog-list__empty {
+  color: var(--fontColor2);
+  font-size: 1.2rem;
+  padding: 8px 4px;
+}
+
+/* ── Botón eliminar (×) ── */
+.btn-remove {
+  background: none;
+  border: none;
+  color: #c62828;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0 6px;
+  line-height: 1;
+  transition: opacity 0.15s;
+}
+
+.btn-remove:hover {
+  opacity: 0.75;
+}
+
+/* ── Fila para agregar ── */
+.catalog-add {
+  display: flex;
+  gap: 8px;
+}
+
+.catalog-add input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 2px solid var(--contrastColor);
+  border-radius: 5px;
+  font-size: 1.3rem;
+  background: var(--mainColor);
+  color: var(--fontColor);
+  box-sizing: border-box;
+}
+
+.catalog-add input::placeholder {
+  color: var(--fontColor2);
+  opacity: 0.7;
+}
+
+.catalog-add button {
+  background: var(--contrastColor);
+  color: var(--mainColor);
+  border: none;
+  border-radius: 2em;
+  padding: 8px 16px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.catalog-add button:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.catalog-add button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Pie ── */
+.catalog-manager__footer {
+  margin-top: 24px;
+}
+
+.btn-close {
+  background: var(--fontColor2);
+  color: var(--mainColor);
+  border: none;
+  border-radius: 2em;
+  padding: 10px 24px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-close:hover {
+  opacity: 0.85;
+}
+
+/* ── Error ── */
+.error-msg {
+  color: #e53935;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}

@@ -1,0 +1,318 @@
+/* ── Encabezado de sesión ── */
+.session-header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 8px 4px 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--contrastColor);
+}
+
+.session-header__greeting {
+  grid-column: 2;
+  font-size: 1.3rem;
+  color: var(--fontColor2);
+  text-align: center;
+}
+
+.session-header__actions {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--contrastColor);
+  background: transparent;
+  color: var(--fontColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-icon:hover {
+  background: var(--contrastColor);
+  color: var(--mainColor);
+}
+
+.btn-icon--logout:hover {
+  background: var(--fontColor2);
+  border-color: var(--fontColor2);
+  color: var(--mainColor);
+}
+
+/* ── Contenedor principal ── */
+.admin-container {
+  padding: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ── Encabezado ── */
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.admin-header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--fontColor);
+}
+
+/* ── Botones generales ── */
+button {
+  background: var(--contrastColor);
+  color: var(--mainColor);
+  border: none;
+  border-radius: 2em;
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-back {
+  background: var(--fontColor2);
+  color: var(--mainColor);
+  font-size: 1.2rem;
+  padding: 8px 18px;
+}
+
+.btn-cancel {
+  background: var(--fontColor2);
+  color: var(--mainColor);
+}
+
+.btn-delete {
+  background: #c62828;
+  color: #fff;
+  padding: 6px 14px;
+  font-size: 1.1rem;
+}
+
+.btn-delete:hover {
+  opacity: 0.85;
+  background: #c62828;
+}
+
+/* ── Panel de contraseña temporal ── */
+.temp-password-panel {
+  background: var(--mainColor2);
+  border: 2px solid var(--contrastColor);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.temp-password-panel strong {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--fontColor);
+  margin-bottom: 8px;
+}
+
+.temp-password-panel p {
+  font-size: 1.3rem;
+  color: var(--fontColor2);
+  margin-bottom: 6px;
+}
+
+.temp-password {
+  display: block;
+  font-size: 1.8rem;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  background: var(--mainColor);
+  border: 2px dashed var(--contrastColor);
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin: 8px 0;
+  color: var(--fontColor);
+  text-align: center;
+}
+
+.warning {
+  font-size: 1.2rem;
+  color: var(--fontColor2);
+  margin: 4px 0 12px;
+}
+
+/* ── Formulario de nuevo usuario ── */
+.user-form {
+  border: 2px solid var(--contrastColor);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+  color: var(--fontColor2);
+}
+
+.field input,
+.field select {
+  padding: 9px 10px;
+  border: 2px solid var(--contrastColor);
+  border-radius: 5px;
+  background: var(--mainColor);
+  color: var(--fontColor);
+  font-size: 1.3rem;
+  box-sizing: border-box;
+}
+
+.field select option {
+  background: var(--mainColor);
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.error-msg {
+  color: #e53935;
+  font-size: 1.2rem;
+  margin: 8px 0 0;
+}
+
+/* ── Tabla de usuarios ── */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--contrastColor);
+  font-size: 1.3rem;
+  color: var(--fontColor);
+}
+
+.users-table th {
+  font-weight: 700;
+  color: var(--fontColor2);
+}
+
+.empty {
+  text-align: center;
+  color: var(--fontColor2);
+  padding: 24px;
+}
+
+/* ── Badges de estado ── */
+.badge-pending,
+.badge-active {
+  font-size: 1.1rem;
+  padding: 2px 10px;
+  border-radius: 2em;
+  border: 1px solid;
+}
+
+.badge-pending {
+  color: var(--fontColor);
+  border-color: var(--fontColor);
+}
+
+.badge-active {
+  color: var(--contrastColor);
+  border-color: var(--contrastColor);
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* ── Tabla responsive: cada fila se convierte en tarjeta ── */
+  .users-table,
+  .users-table tbody,
+  .users-table tr {
+    display: block;
+  }
+
+  .users-table thead {
+    display: none;
+  }
+
+  .users-table tr {
+    border: 1px solid var(--contrastColor);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 4px 12px;
+  }
+
+  .users-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--contrastColor);
+    padding: 10px 0;
+    font-size: 1.3rem;
+  }
+
+  .users-table td:last-child {
+    border-bottom: none;
+  }
+
+  .users-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--fontColor2);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+
+  .td-actions {
+    justify-content: flex-end;
+  }
+
+  .td-actions::before {
+    content: '' !important;
+  }
+}

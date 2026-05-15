@@ -1,0 +1,253 @@
+.container-new-course-form {
+    text-align: center;
+}
+
+p {
+    color: var(--contrastColor);
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 10px;
+}
+
+form {
+    font-size: 1.6rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 20px;
+    color: var(--fontColor);
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+label {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+span {
+    margin-right: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px 8px;
+    border-radius: 5px;
+    border: 2px solid var(--contrastColor);
+    color: var(--fontColor);
+    background: var(--mainColor);
+    box-sizing: border-box;
+}
+
+textarea {
+    background: var(--mainColor);
+    border-radius: 5px;
+    min-height: 90px;
+    border: 2px solid var(--contrastColor);
+    color: var(--fontColor);
+    resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+input::placeholder {
+    color: var(--fontColor2);
+}
+
+select {
+    border: 2px solid var(--contrastColor);
+    border-radius: 5px;
+    color: var(--fontColor2);
+    padding: 10px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--mainColor);
+}
+
+select option {
+    background-color: var(--mainColor);
+}
+
+/* Campos de ancho completo */
+.full-width,
+.days-of-classes {
+    grid-column: 1 / -1;
+}
+
+.days-of-classes {
+    flex-direction: column;
+}
+
+.days-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding: 8px 0;
+    align-items: center;
+}
+
+.day-check {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+.day-check input[type='checkbox'] {
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.day-check.shortcut {
+    background: var(--contrastColor, #1565c0);
+    color: var(--mainColor, #fff);
+    border-color: var(--contrastColor, #1565c0);
+    font-weight: 600;
+}
+
+.days-preview {
+    font-size: 1.1rem;
+    color: var(--fontColor2, #555);
+    margin: 4px 0 0;
+    padding: 0;
+}
+
+/* Fila de búsqueda: input + botón en línea */
+.search-phrase-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-phrase-row input {
+    flex: 1;
+}
+
+.search-phrase-row button {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.phrase-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.phrase-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--contrastColor);
+    color: var(--mainColor);
+    font-size: 1.2rem;
+    padding: 4px 10px;
+    border-radius: 2em;
+}
+
+.chip-remove {
+    background: none;
+    border: none;
+    color: var(--mainColor);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    opacity: 0.8;
+}
+
+.chip-remove:hover {
+    opacity: 1;
+}
+
+input::-webkit-file-upload-button {
+    border: 2px solid var(--contrastColor);
+    background: linear-gradient(0deg, var(--contrastColor), var(--contrastColor2));
+    border-radius: 3px;
+    color: var(--mainColor);
+    padding: 10px;
+}
+
+input[type=radio] {
+    min-width: 30px;
+    height: 15px;
+    width: auto;
+}
+
+.cost-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cost-row input {
+    flex: 1;
+}
+
+.form-cost {
+    flex-shrink: 0;
+}
+
+.form-cost::after {
+    content: "$";
+}
+
+.required::after {
+    content: "*";
+}
+
+.legend-required {
+    grid-column: 1 / -1;
+    color: var(--fontColor);
+    font-size: 1.1rem;
+    padding: 0;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.container-buttons {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+button {
+    align-self: center;
+    background-color: var(--contrastColor);
+    border-radius: 2em;
+    color: var(--mainColor);
+    cursor: pointer;
+    margin: 25px auto;
+    padding: 12px 20px;
+}
+
+.container-buttons .cancel {
+    background-color: var(--fontColor2);
+    color: var(--mainColor);
+}
+
+@media (max-width: 620px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    .container-buttons {
+        flex-direction: column-reverse;
+    }
+}

@@ -1,0 +1,20 @@
+# El index.html nunca se cachea — siempre refleja el deploy más reciente.
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Assets con hash en el nombre (outputHashing: 'all' en angular.json)
+# pueden cachearse para siempre — un nuevo deploy genera nombres nuevos.
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=31536000
+
+# Cabeceras de seguridad básicas.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin

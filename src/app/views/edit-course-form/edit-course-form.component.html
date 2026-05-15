@@ -1,0 +1,169 @@
+<!-- PASO 1: Seleccionar curso -->
+<div *ngIf="step === 'select'" class="container-edit-course-form">
+  <p class="message">Selecciona el curso que deseas editar:</p>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Buscar por nombre o especialidad..."
+      [(ngModel)]="searchText"
+      (input)="filterList()"
+    />
+  </div>
+
+  <p *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</p>
+
+  <ul class="course-list">
+    <li
+      *ngFor="let course of filteredCourses"
+      (click)="selectCourse(course)"
+      class="course-item"
+    >
+      <span class="course-item__name">{{ course.courseName }}</span>
+      <span class="course-item__specialty">{{ course.specialty }}</span>
+    </li>
+    <li *ngIf="filteredCourses.length === 0" class="course-item course-item--empty">
+      No se encontraron cursos
+    </li>
+  </ul>
+
+  <div class="container-buttons">
+    <button class="cancel" (click)="cancel()">CANCELAR Y REGRESAR</button>
+  </div>
+</div>
+
+<!-- PASO 2: Formulario de edición -->
+<div *ngIf="step === 'edit'" class="container-edit-course-form">
+  <p class="message">Editando: <strong>{{ selectedCourse?.courseName }}</strong></p>
+
+  <form [formGroup]="courseForm" id="editCourse" (submit)="onSubmit()">
+
+    <label for="specialty">
+      <span class="required">Especialidad</span>
+      <select formControlName="specialty">
+        <option *ngFor="let name of listSpecialties" [ngValue]="name">{{ name }}</option>
+      </select>
+    </label>
+
+    <label for="courseName">
+      <span class="required">Nombre del curso</span>
+      <input type="text" formControlName="courseName" />
+    </label>
+
+    <label for="courseType">
+      <span class="required">Tipo de curso</span>
+      <select formControlName="courseType">
+        <option *ngFor="let type of typeCourse" [ngValue]="type">{{ type }}</option>
+      </select>
+    </label>
+
+    <label for="professor">
+      <span class="required">Profesor</span>
+      <select formControlName="professor">
+        <option value="" disabled>-- Selecciona un profesor --</option>
+        <option *ngFor="let p of listProfessors" [ngValue]="p">{{ p }}</option>
+      </select>
+    </label>
+
+    <label for="startDate">
+      <span class="required">Fecha de inicio</span>
+      <input type="date" formControlName="startDate" />
+    </label>
+
+    <label for="endDate">
+      <span class="required">Fecha de término</span>
+      <input type="date" formControlName="endDate" />
+    </label>
+
+    <label for="courseModality">
+      <span class="required">Modalidad</span>
+      <select formControlName="courseModality">
+        <option *ngFor="let m of typesModality" [ngValue]="m">{{ m }}</option>
+      </select>
+    </label>
+
+    <label for="daysOfClasses" class="days-of-classes">
+      <span class="required">Días de clase</span>
+      <div class="days-grid">
+        <label class="day-check shortcut">
+          <input type="checkbox" [(ngModel)]="lunVie" [ngModelOptions]="{standalone:true}" (change)="onLunVieChange()"/>
+          <span>Lun — Vie</span>
+        </label>
+        <label class="day-check" *ngFor="let day of ['Lunes','Martes','Miercoles','Jueves','Viernes','Sábado','Domingo']">
+          <input type="checkbox" [(ngModel)]="days[day]" [ngModelOptions]="{standalone:true}" (change)="onDayChange()"/>
+          <span>{{ day }}</span>
+        </label>
+      </div>
+      <p class="days-preview" *ngIf="courseForm.get('daysOfClasses')?.value">
+        {{ courseForm.get('daysOfClasses')?.value }}
+      </p>
+    </label>
+
+    <label for="startTime">
+      <span class="required">Horario — inicia</span>
+      <input type="time" formControlName="startTime" />
+    </label>
+
+    <label for="endTime">
+      <span class="required">Horario — termina</span>
+      <input type="time" formControlName="endTime" />
+    </label>
+
+    <label for="hours">
+      <span class="required">Total de horas</span>
+      <input type="number" formControlName="hours" />
+    </label>
+
+    <label for="cost">
+      <span class="required">Costo</span>
+      <div class="cost-row">
+        <span class="form-cost"></span>
+        <input type="number" formControlName="cost" />
+      </div>
+    </label>
+
+    <label for="objective" class="full-width">
+      <span>Objetivo</span>
+      <textarea formControlName="objective"></textarea>
+    </label>
+
+    <label for="thematicContent" class="full-width">
+      <span>Contenido temático</span>
+      <textarea rows="6" formControlName="thematicContent"></textarea>
+    </label>
+
+    <label for="observations" class="full-width">
+      <span>Observaciones</span>
+      <textarea rows="4" formControlName="observations"></textarea>
+    </label>
+
+    <label for="searchPhrase" class="full-width">
+      <span>Frase de búsqueda</span>
+      <input type="text" formControlName="searchPhrase" />
+    </label>
+
+    <p class="legend-required">* Campos obligatorios</p>
+  </form>
+
+  <p *ngIf="errorMsg"   class="error-msg">{{ errorMsg }}</p>
+  <p *ngIf="successMsg" class="success-msg">{{ successMsg }}</p>
+
+  <div class="container-buttons">
+    <button class="cancel" type="button" (click)="backToList()">&#8592; CAMBIAR CURSO</button>
+    <button
+      class="delete"
+      type="button"
+      (click)="onDelete()"
+      [disabled]="deleteLoading || loading"
+    >
+      {{ deleteLoading ? 'Eliminando...' : 'Eliminar curso' }}
+    </button>
+    <button
+      type="submit"
+      form="editCourse"
+      [disabled]="loading || deleteLoading || courseForm.invalid"
+    >
+      {{ loading ? 'Guardando...' : 'Guardar cambios' }}
+    </button>
+  </div>
+</div>
