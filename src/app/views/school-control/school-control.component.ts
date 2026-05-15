@@ -1,16 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { AuthService, AuthUser } from '../../auth/auth.service';
+import { SchoolControlStateService } from '../../core/school-control-state.service';
 
 @Component({
   selector:    'app-school-control',
   templateUrl: './school-control.component.html',
   styleUrls:   ['./school-control.component.css'],
 })
-export class SchoolControlComponent {
+export class SchoolControlComponent implements OnInit, OnDestroy {
   user: AuthUser | null = null;
 
-  constructor(private auth: AuthService) {
-    this.auth.user$.subscribe(u => this.user = u);
+  public isNewCourse      = false;
+  public isEditCourse     = false;
+  public isCatalogManager = false;
+
+  private subscriptions = new Subscription();
+
+  constructor(
+    private auth:               AuthService,
+    private schoolControlState: SchoolControlStateService,
+  ) {
+    this.subscriptions.add(
+      this.auth.user$.subscribe(u => this.user = u),
+    );
+  }
+
+  ngOnInit(): void {
+    this.subscriptions.add(
+      this.schoolControlState.reset$.subscribe(() => this.resetSubviews()),
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+  private resetSubviews(): void {
+    this.isNewCourse      = false;
+    this.isEditCourse     = false;
+    this.isCatalogManager = false;
   }
 
   logout(): void {
@@ -20,10 +50,6 @@ export class SchoolControlComponent {
   canManageUsers(): boolean {
     return this.auth.canManageUsers();
   }
-
-  public isNewCourse      = false;
-  public isEditCourse     = false;
-  public isCatalogManager = false;
 
   btnShowSelected(phrase: 'Add' | 'Edit'): void {
     if (phrase === 'Add') {

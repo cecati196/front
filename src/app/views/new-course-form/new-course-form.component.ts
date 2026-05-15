@@ -1,8 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CoursesService } from 'src/app/services/courses.service';
 import { CatalogService } from 'src/app/services/catalog.service';
 import { DialogService } from 'src/app/shared/dialog/dialog.service';
+import { UnsavedChangesService } from 'src/app/core/unsaved-changes.service';
 import { Course } from 'src/app/shared/interfaces/course.interface';
 
 @Component({
@@ -10,7 +11,7 @@ import { Course } from 'src/app/shared/interfaces/course.interface';
   templateUrl: './new-course-form.component.html',
   styleUrls: ['./new-course-form.component.css']
 })
-export class NewCourseFormComponent implements OnInit {
+export class NewCourseFormComponent implements OnInit, OnDestroy {
   @Output() closeNewCourseForm: EventEmitter<boolean> = new EventEmitter();
 
   public courseForm: FormGroup;
@@ -21,11 +22,14 @@ export class NewCourseFormComponent implements OnInit {
   public listProfessors:  string[] = [];
   public phraseInput = '';
 
+  private unregisterGuard?: () => void;
+
   constructor(
     private formBuilder:    FormBuilder,
     private coursesService: CoursesService,
     private catalogService: CatalogService,
     private dialog:         DialogService,
+    private unsavedChanges: UnsavedChangesService,
   ) {
     this.courseForm = this.formBuilder.group({
       courseName:      ['', Validators.required],
@@ -54,12 +58,22 @@ export class NewCourseFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.unregisterGuard = this.unsavedChanges.register(
+      () => this.courseForm.dirty
+            || this.phrases.length > 0
+            || !!this.phraseInput.trim(),
+    );
+
     this.catalogService.getSpecialties().subscribe({
       next: items => this.listSpecialties = items.map(s => s.name),
     });
     this.catalogService.getProfessors().subscribe({
       next: items => this.listProfessors = items.map(p => p.name),
     });
+  }
+
+  ngOnDestroy(): void {
+    this.unregisterGuard?.();
   }
 
   cancelAddCourse(): void {
