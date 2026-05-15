@@ -1,12 +1,13 @@
 {
   "name": "cecati196",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy:gh": "ng build && node -e \"require('fs').copyFileSync('dist/cecati196/index.html','dist/cecati196/404.html')\" && ng deploy --no-build --cname=cecati196.edu.mx"
   },
   "private": true,
   "dependencies": {

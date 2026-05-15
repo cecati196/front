@@ -22,7 +22,17 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "_redirects",
+                "input": "src/",
+                "output": "/"
+              },
+              {
+                "glob": "_headers",
+                "input": "src/",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.css"
@@ -90,7 +100,17 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "_redirects",
+                "input": "src/",
+                "output": "/"
+              },
+              {
+                "glob": "_headers",
+                "input": "src/",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.css"

@@ -1,5 +1,5 @@
 export const environment = {
   production:     true,
-  apiUrl:         'https://<SERVER_URL>',
-  authServiceUrl: 'https://<SERVER_URL>',
+  apiUrl:         'https://server-production-b648.up.railway.app',
+  authServiceUrl: 'https://server-production-b648.up.railway.app',
 };
