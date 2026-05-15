@@ -13,19 +13,19 @@
         <div class="menu-items">
             <ul>
                 <li>
-                    <a (click)="this.closeNav()" routerLink="/">Inicio</a>
+                    <a (click)="navigateTo('/')">Inicio</a>
                 </li>
                 <li>
-                    <a (click)="this.closeNav()" routerLink="/cursos">Cursos Disponibles</a>
+                    <a (click)="navigateTo('/cursos')">Cursos Disponibles</a>
                 </li>
                 <li>
-                    <a (click)="this.closeNav()" routerLink="/preguntas">Preguntas Frecuentes</a>
+                    <a (click)="navigateTo('/preguntas')">Preguntas Frecuentes</a>
                 </li>
                 <li>
-                    <a (click)="this.closeNav()" routerLink="/galeria">Galería de Imágenes</a>
+                    <a (click)="navigateTo('/galeria')">Galería de Imágenes</a>
                 </li>
                 <li>
-                    <a (click)="this.closeNav()" routerLink="/control-escolar" class="link-restricted">
+                    <a (click)="navigateTo('/control-escolar')" class="link-restricted">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2.5"
                              stroke-linecap="round" stroke-linejoin="round"

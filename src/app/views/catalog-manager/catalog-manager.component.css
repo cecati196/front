@@ -127,7 +127,7 @@
 }
 
 .btn-close {
-  background: var(--fontColor2);
+  background: var(--fontColor);
   color: var(--mainColor);
   border: none;
   border-radius: 2em;

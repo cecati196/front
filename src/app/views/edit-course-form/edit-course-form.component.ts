@@ -1,8 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CoursesService } from 'src/app/services/courses.service';
 import { CatalogService } from 'src/app/services/catalog.service';
 import { DialogService } from 'src/app/shared/dialog/dialog.service';
+import { UnsavedChangesService } from 'src/app/core/unsaved-changes.service';
 import { Course } from 'src/app/shared/interfaces/course.interface';
 
 @Component({
@@ -10,8 +11,10 @@ import { Course } from 'src/app/shared/interfaces/course.interface';
   templateUrl: './edit-course-form.component.html',
   styleUrls: ['./edit-course-form.component.css'],
 })
-export class EditCourseFormComponent implements OnInit {
+export class EditCourseFormComponent implements OnInit, OnDestroy {
   @Output() closeEditCourseForm = new EventEmitter<boolean>();
+
+  private unregisterGuard?: () => void;
 
   step: 'select' | 'edit' = 'select';
 
@@ -44,6 +47,7 @@ export class EditCourseFormComponent implements OnInit {
     private coursesService: CoursesService,
     private catalogService: CatalogService,
     private dialog:         DialogService,
+    private unsavedChanges: UnsavedChangesService,
   ) {
     this.courseForm = this.fb.group({
       courseName:      ['', Validators.required],
@@ -66,6 +70,10 @@ export class EditCourseFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.unregisterGuard = this.unsavedChanges.register(
+      () => this.step === 'edit' && this.courseForm.dirty,
+    );
+
     this.coursesService.getCourses().subscribe({
       next: (courses) => {
         this.allCourses      = courses;
@@ -80,6 +88,10 @@ export class EditCourseFormComponent implements OnInit {
     this.catalogService.getProfessors().subscribe({
       next: items => this.listProfessors = items.map(p => p.name),
     });
+  }
+
+  ngOnDestroy(): void {
+    this.unregisterGuard?.();
   }
 
   filterList(): void {
