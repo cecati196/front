@@ -34,7 +34,7 @@
         *ngIf="!isNewCourse && !isEditCourse && !isCatalogManager">
         <button (click)="btnShowSelected('Add')">Agregar Nuevo Curso</button>
         <button (click)="btnShowSelected('Edit')">Editar / Eliminar Curso</button>
-        <button (click)="openCatalogManager()">Editar Catálogos</button>
+        <button (click)="openCatalogManager()">Editar Catálogos. Especialidades y Profesores</button>
         <button *ngIf="canManageUsers()" routerLink="/admin-usuarios">Administrar Usuarios</button>
     </div>
 </section>

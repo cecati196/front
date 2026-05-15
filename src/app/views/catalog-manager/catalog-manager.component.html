@@ -11,7 +11,7 @@
       <ul class="catalog-list">
         <li *ngFor="let s of specialties" class="catalog-list__item">
           <span>{{ s.name }}</span>
-          <button class="btn-remove" type="button" (click)="removeSpecialty(s.id)" title="Eliminar">×</button>
+          <button class="btn-remove" type="button" (click)="removeSpecialty(s.id, s.name)" title="Eliminar">×</button>
         </li>
         <li *ngIf="specialties.length === 0" class="catalog-list__empty">Sin registros</li>
       </ul>
@@ -32,7 +32,7 @@
       <ul class="catalog-list">
         <li *ngFor="let p of professors" class="catalog-list__item">
           <span>{{ p.name }}</span>
-          <button class="btn-remove" type="button" (click)="removeProfessor(p.id)" title="Eliminar">×</button>
+          <button class="btn-remove" type="button" (click)="removeProfessor(p.id, p.name)" title="Eliminar">×</button>
         </li>
         <li *ngIf="professors.length === 0" class="catalog-list__empty">Sin registros</li>
       </ul>

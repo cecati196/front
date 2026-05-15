@@ -38,8 +38,11 @@ export class CatalogManagerComponent implements OnInit {
     });
   }
 
-  async removeSpecialty(id: number): Promise<void> {
-    const confirmed = await this.dialog.openConfirm('¿Eliminar esta especialidad?', { confirmLabel: 'Eliminar', isDangerous: true });
+  async removeSpecialty(id: number, name: string): Promise<void> {
+    const confirmed = await this.dialog.openConfirm(
+      `¿Eliminar la especialidad "${name}"? Esta acción no se puede deshacer.`,
+      { confirmLabel: 'Eliminar', isDangerous: true },
+    );
     if (!confirmed) return;
     this.catalog.removeSpecialty(id).subscribe({
       next: () => this.specialties = this.specialties.filter(s => s.id !== id),
@@ -60,8 +63,11 @@ export class CatalogManagerComponent implements OnInit {
     });
   }
 
-  async removeProfessor(id: number): Promise<void> {
-    const confirmed = await this.dialog.openConfirm('¿Eliminar este profesor?', { confirmLabel: 'Eliminar', isDangerous: true });
+  async removeProfessor(id: number, name: string): Promise<void> {
+    const confirmed = await this.dialog.openConfirm(
+      `¿Eliminar al profesor "${name}"? Esta acción no se puede deshacer.`,
+      { confirmLabel: 'Eliminar', isDangerous: true },
+    );
     if (!confirmed) return;
     this.catalog.removeProfessor(id).subscribe({
       next: () => this.professors = this.professors.filter(p => p.id !== id),
