@@ -66,6 +66,6 @@
 }
 
 .btn-cancel {
-  background: var(--fontColor2);
+  background: var(--contrastColor);
   color: var(--mainColor);
 }
