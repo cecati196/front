@@ -95,6 +95,7 @@ body {
     list-style: none;
     padding: 10px;
     height: 45px;
+    cursor: pointer;
   }
   
   .menu-items li a {

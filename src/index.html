@@ -11,18 +11,6 @@
   <link rel="icon" href="favicon.ico">
   <link rel="preconnect" href="https://server-production-b648.up.railway.app" crossorigin>
   <link rel="dns-prefetch" href="https://server-production-b648.up.railway.app">
-  <script>
-    // Fire-and-forget: dispara el wake-up del backend (server + Postgres en Railway)
-    // antes de que se descargue el bundle de Angular. No bloquea el render.
-    try {
-      fetch('https://server-production-b648.up.railway.app/health', {
-        mode: 'cors',
-        cache: 'no-store',
-        credentials: 'omit',
-        keepalive: true,
-      }).catch(function () {});
-    } catch (_) {}
-  </script>
   <!-- ==================================== -->
   <link rel="stylesheet" href="/src/assets/plugins/default-dark.css">
   <!-- ==================================== -->
