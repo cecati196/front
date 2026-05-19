@@ -28,7 +28,6 @@ import { DeleteCourseComponent } from './views/delete-course/delete-course.compo
 import { CatalogManagerComponent } from './views/catalog-manager/catalog-manager.component';
 import { UpdatePasswordComponent } from './views/update-password/update-password.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
-import { WakeUpIndicatorComponent } from './core/wake-up-indicator.component';
 import { RetryInterceptor } from './core/retry.interceptor';
 import { AuthInterceptor } from './auth/auth.interceptor';
 
@@ -58,7 +57,6 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     UpdatePasswordComponent,
     CatalogManagerComponent,
     DialogComponent,
-    WakeUpIndicatorComponent,
   ],
   imports: [
     BrowserModule,
